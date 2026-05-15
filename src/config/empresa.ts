@@ -84,9 +84,9 @@ export const EMPRESA = {
 
   // ── Depoimentos ──────────────────────────────────────────
   testimonials: [
-    { nome: "Cliente Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Contratei a Gilmar Fretes para a minha mudança aqui em Uberlândia e fiquei muito satisfeita. A equipe foi pontual, cuidadosa com meus móveis e o preço ficou dentro do que eu esperava. Super recomendo!" },
-    { nome: "Cliente Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Precisei de um mini frete rápido e a Gilmar resolveu no mesmo dia. Atendimento excelente, sem enrolação. Vou chamar de novo com certeza." },
-    { nome: "Empresa Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Fizeram a mudança da nossa empresa em Uberlândia sem nenhum imprevisto. Profissionais de verdade. O Gilmar acompanhou tudo de perto e deixamos o escritório novo no prazo." },
+    { nome: "Fernanda Oliveira", local: "Uberlândia – MG", nota: 5, texto: "Contratei a Gilmar Fretes para a minha mudança aqui em Uberlândia e fiquei muito satisfeita. A equipe foi pontual, cuidadosa com meus móveis e o preço ficou dentro do que eu esperava. Super recomendo!" },
+    { nome: "Rafael Mendes", local: "Uberlândia – MG", nota: 5, texto: "Precisei de um mini frete rápido e a Gilmar resolveu no mesmo dia. Atendimento excelente, sem enrolação. Vou chamar de novo com certeza." },
+    { nome: "Carlos Eduardo", local: "Uberlândia – MG", nota: 5, texto: "Fizeram a mudança da nossa empresa em Uberlândia sem nenhum imprevisto. Profissionais de verdade. O Gilmar acompanhou tudo de perto e deixamos o escritório novo no prazo." },
   ],
 
   // ── FAQ ──────────────────────────────────────────────────
