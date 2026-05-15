@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git commit *)",
+      "Bash(vercel project *)",
+      "Bash(vercel link *)",
+      "Bash(vercel pull *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

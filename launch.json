@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Dev Server",
+      "runtimeExecutable": "node_modules\\.bin\\vite.cmd",
+      "runtimeArgs": ["dev"],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "Preview Server",
+      "runtimeExecutable": "node_modules\\.bin\\vite.cmd",
+      "runtimeArgs": ["preview"],
+      "port": 4173
+    }
+  ]
+}
