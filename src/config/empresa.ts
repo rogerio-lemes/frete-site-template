@@ -6,104 +6,113 @@
 
 export const EMPRESA = {
   // ── Identidade ───────────────────────────────────────────
-  nome: "Lúcio Fretes",
-  nomeSlogan: "Lúcio Fretes",
+  nome: "Gilmar Fretes",
+  nomeSlogan: "Gilmar Fretes",
   cidade: "Uberlândia",
   estado: "MG",
   regiao: "Uberlândia e região",
-  site: "https://lucio-fretes.vercel.app/",
+  site: "https://gilmarfretes.com.br/",
 
   // ── Contato ──────────────────────────────────────────────
-  telefone: "(34) 99656-7666",
-  telefoneRaw: "5534996567666",   // somente números, com DDI
-  horario: "24h por dia, todos os dias",
-  horarioSchema: "Mo-Su 00:00-24:00",
+  telefone: "(34) 99141-2518",
+  telefoneRaw: "5534991412518",   // somente números, com DDI
+  horario: "Segunda a Sexta, das 07h às 18h",
+  horarioSchema: "Mo-Fr 07:00-18:00",
+
+  // ── Endereço ─────────────────────────────────────────────
+  enderecoRua: "Rua das Prímulas, 380",
+  enderecoBairro: "Panorama",
+  enderecoCidade: "Uberlândia – MG",
+  enderecoCEP: "38413-671",
+  enderecoCompleto: "Rua das Prímulas, 380 – Panorama, Uberlândia – MG, CEP 38413-671",
 
   // ── Links ────────────────────────────────────────────────
-  googleReviewLink: "https://g.page/r/CXd-G9_EHWD6EAE/review",
+  googleReviewLink: "https://g.page/r/gilmarfretes/review",
   googleRating: "5,0",
-  googleReviewCount: "350+",
+  googleReviewCount: "100+",
 
   // ── WhatsApp ─────────────────────────────────────────────
   waMensagemPadrao: "Olá, estou em seu site e gostaria de solicitar um orçamento de frete!",
   waMensagemIdeal: "Olá, estou no seu site e quero entender qual serviço de frete é ideal para mim!",
 
   // ── SEO ──────────────────────────────────────────────────
-  seoTitle: "Lúcio Fretes | Carreto Pequeno e Frete em Uberlândia",
-  seoDescription: "Precisa de carreto pequeno ou frete de mudança em Uberlândia? A Lúcio Fretes atende 24h com agilidade, honestidade e preço justo. Solicite seu orçamento agora!",
-  seoKeywords: "carreto pequeno, frete em Uberlândia, mudanças Uberlândia, mini frete, transporte de mudanças, frete mudanças, carreto pequeno perto de mim, empresa de mudança, frete barato",
+  seoTitle: "Gilmar Fretes | Fretes e Mudanças em Uberlândia",
+  seoDescription: "Precisa de caminhão de frete em Uberlândia? A Gilmar Fretes faz mudanças residenciais, mini fretes e transporte de móveis. Solicite seu orçamento agora!",
+  seoKeywords: "caminhão de frete, frete para mudança, fretes e mudanças, mudança frete, pequenos fretes, transporte de mudanças, mini frete Uberlândia, empresa de mudança residencial, orçamento de mudança, carreto perto de mim",
 
   // ── Hero ─────────────────────────────────────────────────
-  heroH1Inicio: "Carreto Pequeno e Frete Rápido em Uberlândia:",
-  heroH1Destaque: "Atendimento Humano 24 horas",
-  heroSubtitulo: "A Lúcio Fretes nasceu para resolver o que a maioria das transportadoras ignora: aquele carreto pequeno de um bairro para outro, a mudança de apartamento, o eletrodoméstico que precisa chegar no lugar certo hoje. Atendemos pessoas físicas e jurídicas em Uberlândia e região com honestidade, agilidade e foco total na sua necessidade.",
+  heroH1Inicio: "Fretes e Mudanças em Uberlândia:",
+  heroH1Destaque: "Rápido, Seguro e Sem Complicação",
+  heroSubtitulo: "A Gilmar Fretes é a sua empresa de confiança em Uberlândia para mudanças residenciais, mudanças comerciais, mini fretes e transporte de móveis. Se você precisa de um caminhão de frete ágil, com equipe experiente e preço justo, você encontrou o lugar certo. Entre em contato agora e receba seu orçamento sem compromisso.",
 
   // ── Trust Badges ─────────────────────────────────────────
   trustBadges: [
-    "Atendimento 24 horas",
-    "Honestidade e transparência",
-    "Frete rápido e comprometido",
-    "Atendemos Uberlândia e região",
+    "Atendimento local em Uberlândia",
+    "Equipe treinada e comprometida",
+    "Orçamento sem compromisso",
+    "Segunda a Sexta, das 07h às 18h",
   ],
 
   // ── Serviços ─────────────────────────────────────────────
   services: [
-    { title: "Carreto Pequeno em Uberlândia", desc: "Ideal para quem precisa transportar poucos itens de um endereço para outro dentro de Uberlândia ou região. Rápido, prático e com preço justo." },
-    { title: "Mini Frete Residencial",         desc: "Mudança de apartamento, quarto ou sala sem precisar contratar uma grande transportadora. Atendemos com agilidade e cuidado com seus pertences." },
-    { title: "Frete de Mudança",               desc: "Do planejamento até a entrega no novo endereço. Organizamos tudo para que sua mudança em Uberlândia aconteça sem estresse." },
-    { title: "Transporte de Eletrodomésticos", desc: "Geladeira, fogão, máquina de lavar e outros itens pesados transportados com segurança e sem arranhados." },
-    { title: "Pequenos Fretes para Empresas",  desc: "Entrega de equipamentos, mobiliário de escritório e materiais dentro de Uberlândia e cidades vizinhas." },
-    { title: "Frete Urgente",                  desc: "Precisa transportar agora? Atendemos chamadas de urgência com rapidez e sem burocracia, a qualquer hora do dia ou da noite." },
+    { title: "Mudança Residencial em Uberlândia",  desc: "Organizamos e transportamos seus pertences com cuidado, do início ao fim. Ideal para quem quer praticidade e segurança na hora de mudar de casa." },
+    { title: "Mudança Comercial em Uberlândia",    desc: "Transferimos escritórios, lojas e empresas com agilidade e mínimo de interrupção nas suas operações." },
+    { title: "Mini Frete em Uberlândia",           desc: "Precisa transportar poucos itens? Nosso serviço de mini frete é a solução econômica para pequenas cargas em Uberlândia." },
+    { title: "Transporte de Móveis em Uberlândia", desc: "Levamos seus móveis com segurança, usando os equipamentos certos para evitar danos durante o transporte." },
+    { title: "Frete para Empresas em Uberlândia",  desc: "Soluções de frete sob medida para negócios de todos os tamanhos. Agilidade, pontualidade e comprometimento." },
+    { title: "Transporte de Mudanças em Uberlândia", desc: "Caminhão de frete disponível para mudanças completas, com equipe preparada para carregar, organizar e entregar." },
   ],
 
   // ── Diferenciais ─────────────────────────────────────────
   benefits: [
-    { title: "Atendimento Humano",        desc: "Você fala com quem vai resolver o seu problema: sem robô, sem transferência, sem enrolação." },
-    { title: "Rapidez e Pontualidade",    desc: "Valorizamos o seu tempo. Chegamos no horário combinado e entregamos com agilidade." },
-    { title: "Honestidade Acima de Tudo", desc: "Passamos o preço real antes de qualquer coisa. Sem taxas escondidas, sem cobranças surpresa." },
-    { title: "Conhecimento Local",        desc: "Atuamos em Uberlândia há anos e conhecemos cada bairro, acesso e rota. Isso faz diferença no seu frete." },
-    { title: "Flexibilidade Total",       desc: "Adaptamos o serviço ao que você realmente precisa: seja um carreto pequeno ou uma mudança completa." },
-    { title: "Disponível 24 Horas",       desc: "Urgência não tem horário. Se você precisar de frete agora, a Lúcio Fretes está disponível para atender." },
+    { title: "Agilidade no Atendimento",           desc: "Respondemos rápido e organizamos seu frete ou mudança sem enrolação. Seu tempo é importante para nós." },
+    { title: "Equipe Treinada e Comprometida",     desc: "Profissionais experientes em mudanças residenciais e comerciais, com cuidado no manuseio dos seus pertences." },
+    { title: "Preços Competitivos",                desc: "Oferecemos um serviço completo com custo-benefício real. Fretes e mudanças de qualidade sem pesar no bolso." },
+    { title: "Do Mini Frete ao Transporte Completo", desc: "Atendemos desde pequenas cargas até mudanças completas de casas e empresas em Uberlândia e região." },
+    { title: "Empresa Local em Uberlândia",        desc: "Somos daqui. Conhecemos a cidade, os bairros e as melhores rotas para garantir agilidade na entrega." },
+    { title: "Mudança Tranquila e Sem Imprevistos", desc: "Nosso compromisso é fazer com que sua mudança aconteça com tranquilidade, do planejamento à entrega final." },
   ],
 
   // ── Como Funciona ─────────────────────────────────────────
   steps: [
-    { title: "Você entra em contato",          desc: "Mande uma mensagem pelo WhatsApp, pelo formulário do site ou ligue. Estamos disponíveis 24 horas em Uberlândia." },
-    { title: "Orçamento claro e agendamento",  desc: "Passamos o valor real e transparente, sem taxas escondidas. Com sua aprovação, agendamos a melhor data e horário." },
-    { title: "Realizamos o frete com cuidado", desc: "Nossa equipe chega no horário combinado, trata seus pertences com responsabilidade e entrega tudo no destino certo." },
+    { title: "Você entra em contato",               desc: "Mande uma mensagem pelo WhatsApp ou preencha o formulário. Sem precisar ligar ou esperar em fila." },
+    { title: "Nossa equipe entende sua necessidade", desc: "Conversamos sobre o que você precisa: quantidade de itens, distância, data desejada e qualquer detalhe importante para planejar bem o seu frete." },
+    { title: "Apresentamos a melhor solução",        desc: "Com base no que você nos conta, indicamos o serviço ideal — seja caminhão de frete completo, mini frete ou transporte de móveis." },
+    { title: "Você recebe o orçamento sem surpresas", desc: "Orçamento claro, com o valor combinado antes de fechar. Sem taxas escondidas." },
+    { title: "Executamos com cuidado e pontualidade", desc: "No dia combinado, nossa equipe chega no horário, cuida dos seus pertences e entrega tudo no destino com segurança." },
   ],
 
   // ── Depoimentos ──────────────────────────────────────────
   testimonials: [
-    { nome: "Ana Paula R.",  local: "Santa Mônica, Uberlândia", nota: 5, texto: "Precisei de um carreto de última hora aqui em Uberlândia e o Lúcio atendeu no mesmo dia. Muito pontual, cuidadoso com meus móveis e o preço foi honesto. Recomendo!" },
-    { nome: "Marcos V.",     local: "Tibery, Uberlândia",       nota: 5, texto: "Fiz uma mudança de apartamento pelo centro de Uberlândia e fiquei muito satisfeito. Ele tratou cada item com cuidado, não quebrou nada e ainda me ajudou a organizar. Serviço excelente!" },
-    { nome: "Fernanda C.",   local: "Jardim Brasília, Uberlândia", nota: 5, texto: "Contratei para transportar minha geladeira e máquina de lavar. Chegou no horário, teve paciência, colocou tudo no lugar. Preço justo e atendimento top. Já indiquei para vários amigos." },
+    { nome: "Cliente Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Contratei a Gilmar Fretes para a minha mudança aqui em Uberlândia e fiquei muito satisfeita. A equipe foi pontual, cuidadosa com meus móveis e o preço ficou dentro do que eu esperava. Super recomendo!" },
+    { nome: "Cliente Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Precisei de um mini frete rápido e a Gilmar resolveu no mesmo dia. Atendimento excelente, sem enrolação. Vou chamar de novo com certeza." },
+    { nome: "Empresa Uberlândia", local: "Uberlândia – MG", nota: 5, texto: "Fizeram a mudança da nossa empresa em Uberlândia sem nenhum imprevisto. Profissionais de verdade. O Gilmar acompanhou tudo de perto e deixamos o escritório novo no prazo." },
   ],
 
   // ── FAQ ──────────────────────────────────────────────────
   faqs: [
-    { q: "Como faço para solicitar um frete ou orçamento?",        a: "É simples: entre em contato pelo WhatsApp (34) 99656-7666, pelo formulário do site ou ligue diretamente. Respondemos rapidamente e sem burocracia. Estamos disponíveis 24 horas em Uberlândia." },
-    { q: "Vocês atendem todos os bairros de Uberlândia?",          a: "Sim! Atendemos toda a cidade de Uberlândia, do centro aos bairros mais afastados, além de cidades da região quando necessário. Basta informar o endereço de origem e destino para confirmarmos o atendimento." },
-    { q: "Como é calculado o valor do frete?",                     a: "O valor é calculado com base na distância percorrida, no volume dos itens e na complexidade do serviço. Passamos o orçamento de forma clara e transparente antes de qualquer confirmação, sem cobranças surpresa." },
-    { q: "Quanto tempo demora para ser atendido?",                 a: "Para fretes agendados, combinamos o horário mais conveniente para você. Para urgências, fazemos o possível para atender no mesmo dia. Por isso funcionamos 24 horas em Uberlândia." },
-    { q: "Que tipo de itens vocês transportam?",                   a: "Transportamos móveis, eletrodomésticos, caixas, equipamentos, materiais de escritório e demais itens de uso doméstico ou comercial. Somos especializados em carreto pequeno e pequenas mudanças para pessoas físicas e jurídicas." },
-    { q: "Posso tirar dúvidas antes de fechar o serviço?",         a: "Claro! Incentivamos isso. Quanto mais você nos conta sobre o que precisa, mais assertivo será o orçamento e o atendimento. Fale com a gente pelo WhatsApp sem compromisso." },
-    { q: "A Lúcio Fretes oferece suporte durante e após o frete?", a: "Sim. Acompanhamos todo o processo, desde o carregamento até a entrega no destino, e estamos disponíveis para qualquer dúvida ou ajuste que surgir durante o serviço." },
-    { q: "Quais informações preciso informar para solicitar o frete?", a: "Nos informe: endereço de origem e destino (bairro ou rua em Uberlândia), o que precisa ser transportado, a quantidade de itens e o dia/horário desejado. Com isso, já conseguimos passar o orçamento rapidamente." },
+    { q: "Como faço para falar com a Gilmar Fretes?",          a: "É bem simples. Você pode entrar em contato pelo WhatsApp (34) 99141-2518, preencher o formulário nesta página ou ligar diretamente. Nossa equipe atende de segunda a sexta, das 07h às 18h, em Uberlândia." },
+    { q: "A Gilmar Fretes atende meu bairro em Uberlândia?",   a: "Sim! Atendemos toda a cidade de Uberlândia e região. Se quiser confirmar a cobertura para o seu endereço específico, é só mandar uma mensagem pelo WhatsApp com a localização de origem e destino." },
+    { q: "Como funciona o orçamento de mudança?",              a: "O orçamento é gratuito e sem compromisso. Você nos informa os detalhes da mudança — quantidade de itens, endereços de saída e entrega, data pretendida — e a gente calcula o melhor valor para o seu caso." },
+    { q: "Quanto tempo demora para realizar um frete ou mudança?", a: "O prazo varia conforme o volume e a distância. Mudanças residenciais de pequeno e médio porte costumam ser realizadas em um único dia. Mini fretes podem ser feitos no mesmo dia da solicitação, dependendo da agenda." },
+    { q: "Quais serviços a Gilmar Fretes oferece?",            a: "Trabalhamos com: mudança residencial, mudança comercial, mini frete, transporte de móveis, frete para empresas e transporte de mudanças com caminhão de frete equipado. Cada serviço é planejado conforme a sua necessidade." },
+    { q: "Posso tirar dúvidas antes de fechar o serviço?",     a: "Com certeza. Nossa equipe está disponível para conversar, esclarecer dúvidas e orientar você antes de qualquer decisão. Basta entrar em contato pelo WhatsApp — sem pressão e sem compromisso." },
+    { q: "A empresa tem equipe para ajudar na mudança ou só o transporte?", a: "A Gilmar Fretes oferece serviço completo, com equipe para carregar, organizar e transportar seus pertences com segurança. Não é apenas o veículo — é a solução completa para sua mudança em Uberlândia." },
+    { q: "Quais informações preciso enviar para solicitar um orçamento?", a: "Para agilizar o atendimento, informe: endereço de origem, endereço de destino, data desejada para o frete ou mudança, e uma breve descrição dos itens (móveis, eletrodomésticos, caixas etc.). Com isso, já conseguimos montar uma proposta precisa para você." },
   ],
 
   // ── Sobre ────────────────────────────────────────────────
-  sobreTexto: "A Lúcio Fretes é especialista em carreto pequeno, mini fretes e mudanças residenciais em Uberlândia e região. Atendimento humano, honesto e disponível 24 horas.",
+  sobreTexto: "A Gilmar Fretes é uma empresa de Uberlândia (MG) especializada em fretes e mudanças residenciais e comerciais. Atendimento ágil, equipe comprometida e preço justo.",
   sobreStats: [
-    { valor: "24h",   label: "Disponibilidade" },
-    { valor: "5,0",   label: "Nota no Google" },
-    { valor: "350+",  label: "Clientes atendidos" },
-    { valor: "100%",  label: "Satisfação" },
+    { valor: "6",    label: "Modalidades de serviço" },
+    { valor: "5,0",  label: "Avaliação no Google" },
+    { valor: "100+", label: "Clientes atendidos" },
+    { valor: "100%", label: "Comprometimento" },
   ],
 
   // ── Rodapé ───────────────────────────────────────────────
-  footerDescricao: "Especialista em carreto pequeno, mini fretes e mudanças residenciais em Uberlândia e região. Atendimento humano, honesto e disponível 24 horas.",
-  copyright: "© 2025 Lúcio Fretes. Todos os direitos reservados.",
+  footerDescricao: "A Gilmar Fretes é sua parceira de confiança para fretes e mudanças em Uberlândia – MG. Mudanças residenciais, comerciais, mini fretes e transporte de móveis com agilidade e preço justo.",
+  copyright: "© 2025 Gilmar Fretes. Todos os direitos reservados.",
   cidadeEstado: "Uberlândia, MG",
 };
 

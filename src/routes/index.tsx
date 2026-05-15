@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoImage from "@/assets/logo-lucio.webp";
-import avatarAtendente from "@/assets/avatar-atendente.webp";
-import heroImage from "@/assets/galeria-1.webp";
-import ctaImage from "@/assets/galeria-2.webp";
-import galeria1 from "@/assets/galeria-1.webp";
-import galeria2 from "@/assets/galeria-2.webp";
-import galeria3 from "@/assets/galeria-3.webp";
-import galeria4 from "@/assets/galeria-4.webp";
-import galeria5 from "@/assets/galeria-5.webp";
-import galeria6 from "@/assets/galeria-6.webp";
+import { EMPRESA, WA_LINK as WA_LINK_CONFIG, WA_BASIC as WA_BASIC_CONFIG } from "@/config/empresa";
+import logoImage from "@/assets/logo-gilmar.png";
+import avatarAtendente from "@/assets/galeria-gilmar-3.jpg";
+import heroImage from "@/assets/galeria-gilmar-1.jpg";
+import ctaImage from "@/assets/galeria-gilmar-5.jpg";
+import galeria1 from "@/assets/galeria-gilmar-1.jpg";
+import galeria2 from "@/assets/galeria-gilmar-2.jpg";
+import galeria3 from "@/assets/galeria-gilmar-3.jpg";
+import galeria4 from "@/assets/galeria-gilmar-4.jpg";
+import galeria5 from "@/assets/galeria-gilmar-5.jpg";
+import galeria6 from "@/assets/galeria-gilmar-6.jpg";
 import {
  Truck, Package, Home, Building2, Zap, Refrigerator,
  MessageCircle, Phone, Clock, MapPin, ShieldCheck, DollarSign,
@@ -22,10 +23,9 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { WhatsAppMockup } from "@/components/WhatsAppMockup";
 import { SideNav } from "@/components/SideNav";
 
-const WA_MESSAGE = "Olá, estou em seu site e gostaria de solicitar um orçamento de frete!";
-const WA_LINK = `https://wa.me/5534996567666?text=${encodeURIComponent(WA_MESSAGE)}`;
-const WA_BASIC = WA_LINK;
-const WA_CHAT = WA_LINK;
+const WA_LINK = WA_LINK_CONFIG;
+const WA_BASIC = WA_BASIC_CONFIG;
+const WA_CHAT = WA_LINK_CONFIG;
 
 const galeriaImgs = [galeria1, galeria2, galeria3, galeria4, galeria5, galeria6];
 
@@ -33,48 +33,27 @@ export const Route = createFileRoute("/")({
  component: Index,
 });
 
-const services = [
- { icon: Package, title: "Carreto Pequeno em Uberlândia", desc: "Ideal para quem precisa transportar poucos itens de um endereço para outro dentro de Uberlândia ou região. Rápido, prático e com preço justo." },
- { icon: Home, title: "Mini Frete Residencial", desc: "Mudança de apartamento, quarto ou sala sem precisar contratar uma grande transportadora. Atendemos com agilidade e cuidado com seus pertences." },
- { icon: Truck, title: "Frete de Mudança", desc: "Do planejamento até a entrega no novo endereço. Organizamos tudo para que sua mudança em Uberlândia aconteça sem estresse." },
- { icon: Refrigerator, title: "Transporte de Eletrodomésticos", desc: "Geladeira, fogão, máquina de lavar e outros itens pesados transportados com segurança e sem arranhados." },
- { icon: Building2, title: "Pequenos Fretes para Empresas", desc: "Entrega de equipamentos, mobiliário de escritório e materiais dentro de Uberlândia e cidades vizinhas." },
- { icon: Zap, title: "Frete Urgente", desc: "Precisa transportar agora? Atendemos chamadas de urgência com rapidez e sem burocracia, a qualquer hora do dia ou da noite." },
-];
+const serviceIcons = [Home, Building2, Package, Truck, Building2, Zap];
+const services = EMPRESA.services.map((s, i) => ({ icon: serviceIcons[i] ?? Truck, ...s }));
 
-const benefits = [
- { icon: Users, title: "Atendimento Humano", desc: "Você fala com quem vai resolver o seu problema: sem robô, sem transferência, sem enrolação." },
- { icon: Zap, title: "Rapidez e Pontualidade", desc: "Sabemos que o seu tempo tem valor. Chegamos no horário combinado e entregamos com agilidade." },
- { icon: DollarSign, title: "Honestidade Acima de Tudo", desc: "O preço que passamos é o que você paga. Nossa reputação em Uberlândia foi construída na transparência." },
- { icon: MapPin, title: "Conhecimento Local", desc: "Atuamos em Uberlândia há anos e conhecemos cada bairro, acesso e rota. Isso faz diferença no seu frete." },
- { icon: ShieldCheck, title: "Flexibilidade Total", desc: "Adaptamos o serviço ao que você realmente precisa: seja um carreto pequeno ou uma mudança completa." },
- { icon: Clock, title: "Disponível 24 Horas", desc: "Urgência não tem horário. Se você precisar de frete agora, a Lúcio Fretes está disponível para atender." },
-];
+const benefitIcons = [Zap, Users, DollarSign, Truck, MapPin, ShieldCheck];
+const benefits = EMPRESA.benefits.map((b, i) => ({ icon: benefitIcons[i] ?? ShieldCheck, ...b }));
 
-const steps = [
- { n: "1", title: "Você entra em contato", desc: "Mande uma mensagem pelo WhatsApp, pelo formulário do site ou ligue. Estamos disponíveis 24 horas em Uberlândia." },
- { n: "2", title: "Orçamento claro e agendamento", desc: "Passamos o valor real e transparente, sem taxas escondidas. Com sua aprovação, agendamos a melhor data e horário." },
- { n: "3", title: "Realizamos o frete com cuidado", desc: "Nossa equipe chega no horário combinado, trata seus pertences com responsabilidade e entrega tudo no destino certo." },
-];
+const steps = EMPRESA.steps.map((s, i) => ({ n: String(i + 1), ...s }));
 
-const GOOGLE_REVIEW_LINK = "https://g.page/r/CXd-G9_EHWD6EAE/review";
+const GOOGLE_REVIEW_LINK = EMPRESA.googleReviewLink;
 
-const testimonials = [
- { name: "Ana Paula R.", initials: "AP", color: "bg-primary", stars: 5, date: "há 1 semana", text: "Precisei de um carreto pequeno de última hora aqui em Uberlândia e o Lúcio atendeu no mesmo dia. Super pontual, cuidadoso com meus móveis e o preço foi honesto. Recomendo!" },
- { name: "Marcos V.", initials: "MV", color: "bg-[#4285F4]", stars: 5, date: "há 2 semanas", text: "Fiz uma mudança de apartamento pelo centro de Uberlândia e fiquei muito satisfeito. Ele tratou cada item com cuidado, não quebrou nada e ainda me ajudou a organizar. Serviço excelente!" },
- { name: "Fernanda C.", initials: "FC", color: "bg-[#34A853]", stars: 5, date: "há 3 semanas", text: "Contratei para transportar minha geladeira e máquina de lavar. Chegou no horário, teve paciência, colocou tudo no lugar. Preço justo e atendimento top. Já indiquei para vários amigos." },
-];
+const testimonialColors = ["bg-primary", "bg-[#4285F4]", "bg-[#34A853]"];
+const testimonials = EMPRESA.testimonials.map((t, i) => ({
+ name: t.nome,
+ initials: t.nome.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+ color: testimonialColors[i] ?? "bg-primary",
+ stars: t.nota,
+ date: `há ${i + 1} semana${i > 0 ? "s" : ""}`,
+ text: t.texto,
+}));
 
-const faqs = [
- { q: "Como faço para solicitar um frete ou orçamento?", a: "É simples: entre em contato pelo WhatsApp (34) 99656-7666, pelo formulário do site ou ligue diretamente. Respondemos rapidamente e sem burocracia. Estamos disponíveis 24 horas em Uberlândia." },
- { q: "Vocês atendem todos os bairros de Uberlândia?", a: "Sim! Atendemos toda a cidade de Uberlândia, do centro aos bairros mais afastados, além de cidades da região quando necessário. Basta informar o endereço de origem e destino para confirmarmos o atendimento." },
- { q: "Como é calculado o valor do frete?", a: "O valor é calculado com base na distância percorrida, no volume dos itens e na complexidade do serviço. Passamos o orçamento de forma clara e transparente antes de qualquer confirmação, sem cobranças surpresa." },
- { q: "Quanto tempo demora para ser atendido?", a: "Para fretes agendados, combinamos o horário mais conveniente para você. Para urgências, fazemos o possível para atender no mesmo dia. Por isso funcionamos 24 horas em Uberlândia." },
- { q: "Que tipo de itens vocês transportam?", a: "Transportamos móveis, eletrodomésticos, caixas, equipamentos, materiais de escritório e demais itens de uso doméstico ou comercial. Somos especializados em carreto pequeno e pequenas mudanças para pessoas físicas e jurídicas." },
- { q: "Posso tirar dúvidas antes de fechar o serviço?", a: "Claro! Incentivamos isso. Quanto mais você nos conta sobre o que precisa, mais assertivo será o orçamento e o atendimento. Fale com a gente pelo WhatsApp sem compromisso." },
- { q: "A Lúcio Fretes oferece suporte durante e após o frete?", a: "Sim. Acompanhamos todo o processo, desde o carregamento até a entrega no destino, e estamos disponíveis para qualquer dúvida ou ajuste que surgir durante o serviço." },
- { q: "Quais informações preciso informar para solicitar o frete?", a: "Nos informe: endereço de origem e destino (bairro ou rua em Uberlândia), o que precisa ser transportado, a quantidade de itens e o dia/horário desejado. Com isso, já conseguimos passar o orçamento rapidamente." },
-];
+const faqs = EMPRESA.faqs;
 
 const heroSlides = [galeria1, galeria2, galeria3];
 
@@ -97,7 +76,7 @@ function HeroSlider() {
       <img
        key={i}
        src={src}
-       alt={`Lúcio Fretes - carreto pequeno e frete em Uberlândia ${i + 1}`}
+       alt={`${EMPRESA.nome} - fretes e mudanças em Uberlândia ${i + 1}`}
        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
        style={{ opacity: i === current ? 1 : 0 }}
        loading={i === 0 ? "eager" : "lazy"}
@@ -215,10 +194,10 @@ function Index() {
    {/* Top bar */}
    <div className="hidden md:block bg-primary text-primary-foreground text-sm">
     <div className="mx-auto px-4 max-w-[1320px] py-2 flex justify-between items-center">
-     <span className="flex items-center gap-2"><Phone className="w-3.5 h-3.5" /> (34) 99656-7666</span>
+     <span className="flex items-center gap-2"><Phone className="w-3.5 h-3.5" /> {EMPRESA.telefone}</span>
      <span className="flex items-center gap-4">
-      <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> 24h por dia, todos os dias</span>
-      <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> Uberlândia e região</span>
+      <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {EMPRESA.horario}</span>
+      <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> {EMPRESA.regiao}</span>
      </span>
     </div>
    </div>
@@ -227,7 +206,7 @@ function Index() {
    <header className="sticky top-0 z-40 bg-white border-b border-border shadow-[0_4px_24px_-4px_oklch(0.32_0.08_250/0.10)]">
     <div className="mx-auto px-4 max-w-[1320px] flex items-center justify-between">
      <a href="#" onClick={e => { e.preventDefault(); smoothScrollTo(""); }} className="flex items-center">
-      <img src={logoImage} alt="Lúcio Fretes" style={{height: '96px', width: 'auto'}} className="object-contain" />
+      <img src={logoImage} alt={EMPRESA.nome} style={{height: '96px', width: 'auto'}} className="object-contain" />
      </a>
      <nav className="hidden lg:flex items-center gap-1 text-sm font-medium">
       {[["Início","inicio"],["Serviços","servicos"],["Como Funciona","como-funciona"],["Orçamento","orcamento"],["Depoimentos","depoimentos"],["FAQ","faq"],["Contato","contato-final"]].map(([label, id]) => (
@@ -275,10 +254,10 @@ function Index() {
        <MapPin className="w-3.5 h-3.5" /> Uberlândia e cidades vizinhas
       </span>
       <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-5 animate-fade-up" style={{animationDelay:"100ms"}}>
-       Carreto Pequeno e Frete Rápido em Uberlândia: <span className="text-primary">Atendimento Humano 24 horas</span>
+       {EMPRESA.heroH1Inicio} <span className="text-primary">{EMPRESA.heroH1Destaque}</span>
       </h1>
       <p className="text-lg text-muted-foreground mb-7 leading-relaxed animate-fade-up" style={{animationDelay:"200ms"}}>
-       A Lúcio Fretes nasceu para resolver o que a maioria das transportadoras ignora: aquele <strong className="text-foreground">carreto pequeno</strong> de um bairro para outro, a mudança de apartamento, o eletrodoméstico que precisa chegar no lugar certo hoje. Atendemos pessoas físicas e jurídicas em Uberlândia e região com honestidade, agilidade e foco total na sua necessidade.
+       {EMPRESA.heroSubtitulo}
       </p>
       <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{animationDelay:"320ms"}}>
        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_hero", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp animate-cta-pulse">
@@ -289,7 +268,7 @@ function Index() {
        </a>
       </div>
       <div className="grid grid-cols-2 gap-3 text-sm animate-fade-up" style={{animationDelay:"420ms"}}>
-       {["Atendimento 24 horas","Honestidade e transparência","Frete rápido e comprometido","Atendemos Uberlândia e região"].map(t => (
+       {EMPRESA.trustBadges.map(t => (
         <div key={t} className="flex items-center gap-2 text-muted-foreground"><CheckCircle2 className="w-4 h-4 text-success shrink-0" /> {t}</div>
        ))}
       </div>
@@ -312,7 +291,7 @@ function Index() {
         <img
          key={i}
          src={img}
-         alt={`Lúcio Fretes - carreto e mudança em Uberlândia ${(i % galeriaImgs.length) + 1}`}
+         alt={`${EMPRESA.nome} - fretes e mudanças em Uberlândia ${(i % galeriaImgs.length) + 1}`}
          className="h-60 w-80 object-cover rounded-2xl flex-shrink-0 shadow-md cursor-pointer hover:opacity-90 hover:scale-[1.02] transition-all duration-300"
          loading="lazy"
          onClick={() => openLightbox(i % galeriaImgs.length)}
@@ -351,7 +330,7 @@ function Index() {
      <div className="text-center max-w-2xl mx-auto mb-12 anim">
       <span className="text-primary font-semibold text-sm uppercase tracking-wider">Nossos Serviços</span>
       <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Nossos Serviços de Frete e Mudança em Uberlândia e Região</h2>
-      <p className="text-muted-foreground">Os principais serviços que a Lúcio Fretes oferece para facilitar a sua vida, sempre com agilidade, cuidado e o melhor custo-benefício.</p>
+      <p className="text-muted-foreground">Os principais serviços que a {EMPRESA.nome} oferece para facilitar a sua vida, sempre com agilidade, cuidado e o melhor custo-benefício.</p>
      </div>
      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {services.map((s, i) => (
@@ -376,7 +355,7 @@ function Index() {
     <div className="mx-auto px-4 max-w-[1320px]">
      <div className="text-center max-w-2xl mx-auto mb-12 anim">
       <span className="text-primary font-semibold text-sm uppercase tracking-wider">Como Funciona</span>
-      <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Como Funciona o Atendimento da Lúcio Fretes</h2>
+      <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Como Funciona o Atendimento da {EMPRESA.nome}</h2>
       <p className="text-muted-foreground">Sem burocracia. Sem surpresa. Do contato até a entrega, você sabe o que vai acontecer em cada etapa.</p>
      </div>
      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
@@ -516,7 +495,7 @@ function Index() {
       ))}
      </div>
      <div className="text-center mt-10">
-      <a href={`https://wa.me/5534996567666?text=${encodeURIComponent("Olá, estou no seu site e quero entender qual serviço de frete é ideal para mim!")}`} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_servicos_ideal", WA_BASIC)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
+      <a href={`https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent("Olá, estou no seu site e quero entender qual serviço de frete é ideal para mim!")}`} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_servicos_ideal", WA_BASIC)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
        <MessageCircle className="w-5 h-5" /> Quero entender qual solução é ideal para mim
       </a>
      </div>
@@ -528,7 +507,7 @@ function Index() {
     <div className="mx-auto px-4 max-w-[1320px]">
      <div className="text-center max-w-2xl mx-auto mb-12 anim">
       <span className="text-primary font-semibold text-sm uppercase tracking-wider">Diferenciais</span>
-      <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Por Que Escolher a Lúcio Fretes em Uberlândia</h2>
+      <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Por Que Escolher a {EMPRESA.nome} em Uberlândia</h2>
      </div>
      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {benefits.map((b, i) => (
@@ -549,7 +528,7 @@ function Index() {
    <section id="orcamento" className="pt-20 md:pt-28 pb-16 md:pb-20 relative overflow-hidden lp-cta-mid-bg scroll-mt-24">
     <div className="absolute inset-0 lp-cta-mid-grid pointer-events-none" />
     <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-cyan-400/20 blur-3xl lp-blob-float pointer-events-none" />
-    <div className="absolute -bottom-32 -right-20 w-[480px] h-[480px] rounded-full bg-orange-400/20 blur-3xl lp-blob-float pointer-events-none" style={{animationDelay:'-4s'}} />
+    <div className="absolute -bottom-32 -right-20 w-[480px] h-[480px] rounded-full bg-blue-400/20 blur-3xl lp-blob-float pointer-events-none" style={{animationDelay:'-4s'}} />
     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
     <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
@@ -566,8 +545,8 @@ function Index() {
         <a href={WA_CHAT} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_cta", WA_CHAT)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
          <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp
         </a>
-        <a href="tel:+5534996567666" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-orange-500 hover:border-orange-500 hover:text-white hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/20">
-         <Phone className="w-5 h-5" /> (34) 99656-7666
+        <a href={`tel:+${EMPRESA.telefoneRaw}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/20">
+         <Phone className="w-5 h-5" /> {EMPRESA.telefone}
         </a>
        </div>
        <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm opacity-90">
@@ -720,15 +699,15 @@ function Index() {
         <div className="absolute -inset-2 rounded-3xl bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
         {/* Brilho diagonal (shine) */}
         <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1100ms] ease-out bg-[linear-gradient(115deg,transparent_30%,oklch(0.32_0.08_250/0.18)_50%,transparent_70%)]" />
-        <img src={logoImage} alt="Lúcio Fretes" className="relative w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+        <img src={logoImage} alt={EMPRESA.nome} className="relative w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
        </div>
       </div>
 
       {/* Content */}
       <div className="flex-1 anim anim-right">
        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Institucional</span>
-       <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Conheça a Lúcio Fretes</h2>
-       <p className="text-muted-foreground leading-relaxed mb-8">A Lúcio Fretes nasceu de uma necessidade real: realizar <strong className="text-foreground">pequenos fretes</strong> de bairro a bairro em Uberlândia de forma rápida, honesta e acessível. O que começou como uma solução simples se transformou em um serviço de confiança para centenas de moradores e empresas da cidade. Aqui você não é um número de protocolo — cada frete é tratado com atenção às suas necessidades específicas.</p>
+       <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">Conheça a {EMPRESA.nome}</h2>
+       <p className="text-muted-foreground leading-relaxed mb-8">{EMPRESA.sobreTexto}</p>
        <div className="grid grid-cols-2 gap-3">
         {/* MapPin — radar pulsando */}
         <div className="group relative overflow-hidden flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3 lp-card-hover transition-colors duration-300 hover:!bg-primary hover:!border-primary cursor-default">
@@ -826,7 +805,7 @@ function Index() {
             <MessageCircle className="w-4 h-4" /> Chamar no WhatsApp
            </a>
            <a
-            href="tel:+5534996567666"
+            href={`tel:+${EMPRESA.telefoneRaw}`}
             className="inline-flex items-center gap-2 bg-white/15 text-white border border-white/30 px-4 py-2.5 rounded-lg font-semibold text-sm hover:bg-white/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
            >
             <Phone className="w-4 h-4" /> Ligar agora
@@ -845,8 +824,8 @@ function Index() {
     {/* Camadas decorativas */}
     <div className="absolute inset-0 bg-[image:var(--gradient-cta)]" />
     <div className="absolute inset-0 lp-cta-grid opacity-[0.18] pointer-events-none" />
-    <div className="absolute -top-32 -left-24 w-[520px] h-[520px] rounded-full bg-amber-300/30 blur-3xl lp-blob-float pointer-events-none" />
-    <div className="absolute -bottom-40 -right-20 w-[560px] h-[560px] rounded-full bg-rose-500/25 blur-3xl lp-blob-float pointer-events-none" style={{animationDelay:"-3s"}} />
+    <div className="absolute -top-32 -left-24 w-[520px] h-[520px] rounded-full bg-blue-300/20 blur-3xl lp-blob-float pointer-events-none" />
+    <div className="absolute -bottom-40 -right-20 w-[560px] h-[560px] rounded-full bg-indigo-500/20 blur-3xl lp-blob-float pointer-events-none" style={{animationDelay:"-3s"}} />
     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-primary/40 pointer-events-none" />
@@ -857,7 +836,7 @@ function Index() {
       Atendimento agora
      </span>
      <h2 className="font-display text-3xl md:text-5xl font-bold mb-5 max-w-3xl mx-auto leading-tight anim drop-shadow-[0_2px_20px_rgba(0,0,0,0.25)]">Pronto para Resolver Seu Frete em Uberlândia?</h2>
-     <p className="max-w-2xl mx-auto mb-8 opacity-95 text-lg anim">Seja um <strong>carreto pequeno</strong> de bairro a bairro, uma mudança residencial ou o transporte de um eletrodoméstico, a Lúcio Fretes está pronta para atender você agora com honestidade e agilidade. Não deixe para depois o que pode ser resolvido hoje.</p>
+     <p className="max-w-2xl mx-auto mb-8 opacity-95 text-lg anim">Seja uma mudança residencial, comercial ou um mini frete, a {EMPRESA.nome} está pronta para atender você com agilidade, equipe preparada e preço justo em Uberlândia. Não deixe para depois o que pode ser resolvido hoje.</p>
      <div className="flex flex-wrap gap-3 justify-center mb-7">
       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_final_cta", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-7 py-4 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
        <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp agora
@@ -876,8 +855,8 @@ function Index() {
 
    {/* Footer */}
    <footer className="relative bg-primary text-primary-foreground pt-14 pb-6 overflow-hidden lp-footer-bg">
-    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent" />
-    <div className="absolute -top-24 right-10 w-[420px] h-[420px] rounded-full bg-orange-500/15 blur-3xl pointer-events-none" />
+    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
+    <div className="absolute -top-24 right-10 w-[420px] h-[420px] rounded-full bg-blue-500/15 blur-3xl pointer-events-none" />
     <div className="absolute -bottom-24 -left-10 w-[380px] h-[380px] rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
     <div className="absolute inset-0 lp-footer-grid opacity-[0.06] pointer-events-none" />
     <div className="relative mx-auto px-4 max-w-[1320px]">
@@ -886,18 +865,18 @@ function Index() {
       <div>
        <div className="mb-4">
         <div className="inline-block bg-white rounded-xl p-2">
-          <img src={logoImage} alt="Lúcio Fretes" style={{height: '96px', width: 'auto'}} className="object-contain" />
+          <img src={logoImage} alt={EMPRESA.nome} style={{height: '96px', width: 'auto'}} className="object-contain" />
         </div>
        </div>
-       <p className="text-sm opacity-80 leading-relaxed">A Lúcio Fretes é especialista em carreto pequeno, mini fretes e mudanças residenciais em Uberlândia e região. Atendimento humano, honesto e disponível 24 horas.</p>
+       <p className="text-sm opacity-80 leading-relaxed">{EMPRESA.footerDescricao}</p>
       </div>
       <div>
        <h3 className="font-display font-bold mb-4">Contato</h3>
        <ul className="space-y-2.5 text-sm opacity-90">
-        <li className="flex items-center gap-2"><MessageCircle className="w-4 h-4" /> <a href={WA_BASIC} className="hover:underline">(34) 99656-7666</a></li>
-        <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> <a href="tel:+5534996567666" className="hover:underline">(34) 99656-7666</a></li>
-        <li className="flex items-center gap-2"><Clock className="w-4 h-4" /> 24 horas por dia, todos os dias</li>
-        <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Uberlândia e região</li>
+        <li className="flex items-center gap-2"><MessageCircle className="w-4 h-4" /> <a href={WA_BASIC} className="hover:underline">{EMPRESA.telefone}</a></li>
+        <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> <a href={`tel:+${EMPRESA.telefoneRaw}`} className="hover:underline">{EMPRESA.telefone}</a></li>
+        <li className="flex items-center gap-2"><Clock className="w-4 h-4" /> {EMPRESA.horario}</li>
+        <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {EMPRESA.enderecoCompleto}</li>
        </ul>
        {/* Callback form — mobile only, below contact list */}
        <div className="md:hidden mt-6 bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
@@ -911,7 +890,7 @@ function Index() {
           const nome = fd.get("nome") as string;
           const tel = fd.get("tel") as string;
           const tipo = fd.get("tipo") as string;
-          const waUrl = `https://wa.me/5534996567666?text=${encodeURIComponent(`Olá, estou no seu site! Sou ${nome} e gostaria de um orçamento para ${tipo}. Meu telefone é ${tel} 🚛`)}`;
+          const waUrl = `https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent(`Olá, estou no seu site! Sou ${nome} e gostaria de um orçamento para ${tipo}. Meu telefone é ${tel} 🚛`)}`;
           await saveLead({ nome, telefone: tel, origem: "footer", observacoes: `Serviço: ${tipo}` });
           await trackClick("whatsapp_footer", waUrl);
           window.open(waUrl, "_blank");
@@ -921,11 +900,9 @@ function Index() {
          <input name="tel" required maxLength={20} placeholder="(00) 00000-0000" className="w-full px-3 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm" />
          <select name="tipo" required className="w-full px-3 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-white/30 text-sm">
           <option value="" className="text-foreground">Tipo de serviço...</option>
-          <option className="text-foreground">Mini Frete</option>
-          <option className="text-foreground">Pequenas Mudanças</option>
-          <option className="text-foreground">Transporte de Eletrodoméstico</option>
-          <option className="text-foreground">Frete para Empresas</option>
-          <option className="text-foreground">Entrega Rápida</option>
+          {EMPRESA.services.map(s => (
+           <option key={s.title} className="text-foreground">{s.title}</option>
+          ))}
           <option className="text-foreground">Outro</option>
          </select>
          <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-[image:var(--gradient-cta)] text-white px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
@@ -942,11 +919,9 @@ function Index() {
       <div>
        <h3 className="font-display font-bold mb-4">Serviços</h3>
        <ul className="space-y-2 text-sm opacity-90">
-        <li><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">Carreto Pequeno em Uberlândia</a></li>
-        <li><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">Mini Frete Residencial</a></li>
-        <li><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">Frete de Mudança</a></li>
-        <li><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">Transporte de Eletrodomésticos</a></li>
-        <li><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">Pequenos Fretes para Empresas</a></li>
+        {EMPRESA.services.map((s, i) => (
+         <li key={i}><a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="hover:underline">{s.title}</a></li>
+        ))}
        </ul>
       </div>
       <div>
@@ -958,7 +933,7 @@ function Index() {
       </div>
      </div>
      <div className="border-t border-white/15 pt-6 text-xs opacity-75 text-center">
-      © 2025 Lúcio Fretes · Todos os direitos reservados · Uberlândia – MG
+      {EMPRESA.copyright} · {EMPRESA.cidadeEstado}
      </div>
     </div>
    </footer>
@@ -998,7 +973,7 @@ function Index() {
      {/* Anéis de pulso */}
      <span aria-hidden className="absolute inset-0 rounded-full lp-ring-ping bg-emerald-400/40" />
      <span aria-hidden className="absolute inset-0 rounded-full lp-ring-ping lp-ring-ping-delay bg-emerald-400/30" />
-     <img src={avatarAtendente} alt="Atendente Lúcio Fretes" className="w-full h-full object-cover object-top relative z-10" />
+     <img src={avatarAtendente} alt={`Atendente ${EMPRESA.nome}`} className="w-full h-full object-cover object-top relative z-10" />
      <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-white z-20 lp-pulse-dot" />
     </a>
    </div>

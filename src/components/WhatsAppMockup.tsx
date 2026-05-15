@@ -5,15 +5,15 @@ export function WhatsAppMockup() {
  return (
   <div className="relative mx-auto w-full max-w-[340px]">
    {/* Glow estático */}
-   <div className="absolute -inset-8 bg-emerald-400/20 blur-3xl rounded-full pointer-events-none" />
-   <div className="absolute -inset-4 bg-orange-400/20 blur-2xl rounded-full pointer-events-none" />
+   <div className="absolute -inset-8 bg-primary/20 blur-3xl rounded-full pointer-events-none" />
+   <div className="absolute -inset-4 bg-primary/15 blur-2xl rounded-full pointer-events-none" />
 
    {/* Card principal */}
    <div className="relative rounded-3xl overflow-hidden bg-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.6)] ring-1 ring-black/5">
     <div className="relative aspect-[4/5] overflow-hidden">
      <img
       src={atendenteImg}
-      alt="Atendente Evandro Fretes pronta para atender"
+      alt="Atendente Gilmar Fretes pronto para atender"
       width={960}
       height={1280}
       loading="lazy"
@@ -39,7 +39,7 @@ export function WhatsAppMockup() {
 
      {/* Copy persuasiva sobre o card */}
      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-      <div className="text-[10px] uppercase tracking-[0.15em] text-orange-300 font-semibold mb-1">Atendimento Direto</div>
+      <div className="text-[10px] uppercase tracking-[0.15em] text-blue-200 font-semibold mb-1">Atendimento Direto</div>
       <div className="font-display text-xl font-bold leading-tight mb-1">Tire suas dúvidas em segundos</div>
       <div className="text-xs opacity-90 leading-snug">
        Atendimento humano, rápido e sem robô. Resposta em poucos minutos pelo WhatsApp.
@@ -58,7 +58,7 @@ export function WhatsAppMockup() {
       <span className="text-[10px] font-semibold text-neutral-700 leading-tight">Sem<br />compromisso</span>
      </div>
      <div className="flex flex-col items-center text-center gap-1 lp-badge-bounce lp-badge-bounce-d2">
-      <MessageCircle className="w-4 h-4 text-orange-500 lp-icon-chat" />
+      <MessageCircle className="w-4 h-4 text-primary lp-icon-chat" />
       <span className="text-[10px] font-semibold text-neutral-700 leading-tight">Direto no<br />WhatsApp</span>
      </div>
     </div>

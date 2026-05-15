@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -102,9 +103,9 @@
 }
 
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 oklch(0.55 0.2 145 / 0.5); }
-  70%  { box-shadow: 0 0 0 12px oklch(0.55 0.2 145 / 0); }
-  100% { box-shadow: 0 0 0 0 oklch(0.55 0.2 145 / 0); }
+  0%   { box-shadow: 0 0 0 0 oklch(0.47 0.21 265 / 0.5); }
+  70%  { box-shadow: 0 0 0 12px oklch(0.47 0.21 265 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.47 0.21 265 / 0); }
 }
 
 @theme inline {
@@ -120,8 +121,8 @@
   --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-accent-orange: var(--accent-orange);
   --color-success: var(--success);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+  --font-display: 'Poppins', 'Montserrat', system-ui, sans-serif;
 }
 
 /* Scroll-triggered animation base */
@@ -137,33 +138,38 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.99 0.005 240);
-  --foreground: oklch(0.18 0.03 240);
+  --background: oklch(0.99 0.004 265);
+  --foreground: oklch(0.18 0.03 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.03 240);
+  --card-foreground: oklch(0.18 0.03 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.03 240);
-  --primary: oklch(0.45 0.16 143);
-  --primary-foreground: oklch(0.99 0.005 143);
-  --secondary: oklch(0.96 0.02 143);
-  --secondary-foreground: oklch(0.25 0.10 143);
-  --muted: oklch(0.96 0.012 143);
-  --muted-foreground: oklch(0.5 0.04 143);
-  --accent: oklch(0.95 0.06 143);
-  --accent-foreground: oklch(0.25 0.12 143);
+  --popover-foreground: oklch(0.18 0.03 265);
+  /* Azul primário Gilmar — #1863DC */
+  --primary: oklch(0.47 0.21 265);
+  --primary-foreground: oklch(0.99 0.005 265);
+  --secondary: oklch(0.95 0.04 265);
+  --secondary-foreground: oklch(0.25 0.12 265);
+  --muted: oklch(0.96 0.015 265);
+  --muted-foreground: oklch(0.50 0.04 265);
+  --accent: oklch(0.94 0.06 265);
+  --accent-foreground: oklch(0.25 0.14 265);
+  /* Verde WhatsApp */
   --whatsapp: oklch(0.65 0.18 145);
-  --whatsapp-foreground: oklch(0.99 0.005 143);
-  --accent-orange: oklch(0.62 0.22 27);
+  --whatsapp-foreground: oklch(0.99 0.005 145);
+  /* Verde lime CTA — #8FD426 */
+  --accent-orange: oklch(0.78 0.21 123);
   --success: oklch(0.65 0.18 145);
-  --gradient-hero: linear-gradient(135deg, oklch(0.38 0.17 143) 0%, oklch(0.52 0.15 143) 100%);
-  --gradient-cta: linear-gradient(135deg, oklch(0.60 0.22 27) 0%, oklch(0.52 0.24 20) 100%);
-  --shadow-elegant: 0 20px 50px -20px oklch(0.45 0.16 143 / 0.32);
-  --shadow-card: 0 4px 20px -4px oklch(0.45 0.16 143 / 0.14);
+  /* Gradiente hero azul */
+  --gradient-hero: linear-gradient(135deg, oklch(0.35 0.22 265) 0%, oklch(0.50 0.20 265) 100%);
+  /* Gradiente CTA azul profundo */
+  --gradient-cta: linear-gradient(135deg, oklch(0.40 0.20 265) 0%, oklch(0.30 0.16 265) 100%);
+  --shadow-elegant: 0 20px 50px -20px oklch(0.47 0.21 265 / 0.32);
+  --shadow-card: 0 4px 20px -4px oklch(0.47 0.21 265 / 0.14);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.90 0.02 143);
-  --input: oklch(0.90 0.02 143);
-  --ring: oklch(0.58 0.14 143);
+  --border: oklch(0.90 0.025 265);
+  --input: oklch(0.90 0.025 265);
+  --ring: oklch(0.55 0.18 265);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -485,7 +491,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 /* ============================================================
  * CTA final — fundo laranja com profundidade
  * ============================================================ */
-.lp-cta-bg { background: oklch(0.62 0.2 45); }
+.lp-cta-bg { background: oklch(0.38 0.18 265); }
 .lp-cta-grid {
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.18) 1px, transparent 1px),
@@ -526,9 +532,9 @@ html, body { overflow-x: clip; max-width: 100%; }
  * ============================================================ */
 .lp-cta-mid-bg {
   background:
-    radial-gradient(ellipse 70% 80% at 50% 0%, oklch(0.52 0.14 143) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 50% 100%, oklch(0.28 0.10 143) 0%, transparent 70%),
-    linear-gradient(135deg, oklch(0.38 0.14 143) 0%, oklch(0.26 0.10 143) 100%);
+    radial-gradient(ellipse 70% 80% at 50% 0%, oklch(0.52 0.18 265) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 50% 100%, oklch(0.28 0.14 265) 0%, transparent 70%),
+    linear-gradient(135deg, oklch(0.38 0.18 265) 0%, oklch(0.26 0.12 265) 100%);
 }
 .lp-cta-mid-grid {
   background-image:
