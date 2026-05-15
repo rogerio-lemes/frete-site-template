@@ -574,10 +574,10 @@ function Index() {
        <span className="w-8 h-px bg-primary/40" />
       </span>
       <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
-       Quem contrata, <span className="text-primary">recomenda</span> de olhos fechados
+       O que dizem quem já <span className="text-primary">confiou</span> na Gilmar Fretes
       </h2>
       <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-       Não somos nós dizendo são <strong className="text-foreground">clientes reais de Uberlândia</strong> que avaliaram nosso atendimento, cuidado com a carga e pontualidade.<br />Veja por que somos a escolha de confiança em carreto pequeno e fretes em Uberlândia.
+       Cada avaliação é de um <strong className="text-foreground">cliente real de Uberlândia</strong> que viveu a experiência de perto.<br />Veja por que a Gilmar Fretes é a empresa mais indicada para fretes e mudanças na região.
       </p>
      </div>
 
