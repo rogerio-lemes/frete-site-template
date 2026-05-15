@@ -84,9 +84,18 @@ export const EMPRESA = {
 
   // ── Depoimentos ──────────────────────────────────────────
   testimonials: [
-    { nome: "Fernanda Oliveira", local: "Uberlândia – MG", nota: 5, texto: "Contratei a Gilmar Fretes para a minha mudança aqui em Uberlândia e fiquei muito satisfeita. A equipe foi pontual, cuidadosa com meus móveis e o preço ficou dentro do que eu esperava. Super recomendo!" },
-    { nome: "Rafael Mendes", local: "Uberlândia – MG", nota: 5, texto: "Precisei de um mini frete rápido e a Gilmar resolveu no mesmo dia. Atendimento excelente, sem enrolação. Vou chamar de novo com certeza." },
-    { nome: "Carlos Eduardo", local: "Uberlândia – MG", nota: 5, texto: "Fizeram a mudança da nossa empresa em Uberlândia sem nenhum imprevisto. Profissionais de verdade. O Gilmar acompanhou tudo de perto e deixamos o escritório novo no prazo." },
+    { nome: "Fernanda Oliveira",   local: "Uberlândia – MG", nota: 5, texto: "Contratei a Gilmar Fretes para a minha mudança aqui em Uberlândia e fiquei muito satisfeita. A equipe foi pontual, cuidadosa com meus móveis e o preço ficou dentro do que eu esperava. Super recomendo!" },
+    { nome: "Rafael Mendes",       local: "Uberlândia – MG", nota: 5, texto: "Precisei de um mini frete rápido e a Gilmar resolveu no mesmo dia. Atendimento excelente, sem enrolação. Vou chamar de novo com certeza." },
+    { nome: "Carlos Eduardo",      local: "Uberlândia – MG", nota: 5, texto: "Fizeram a mudança da nossa empresa em Uberlândia sem nenhum imprevisto. Profissionais de verdade. O Gilmar acompanhou tudo de perto e deixamos o escritório novo no prazo." },
+    { nome: "Patrícia Souza",      local: "Uberlândia – MG", nota: 5, texto: "Mudança tranquila do início ao fim. A equipe chegou no horário combinado, embalou tudo com cuidado e entregou sem nenhum dano. Preço justo e atendimento de primeira. Indico a todos!" },
+    { nome: "Marcos Andrade",      local: "Uberlândia – MG", nota: 5, texto: "Solicitei transporte de alguns móveis e foi tudo perfeito. Rápido, organizado e sem complicação. Já indiquei para a minha família e vou usar de novo na próxima mudança." },
+    { nome: "Juliana Ferreira",    local: "Uberlândia – MG", nota: 5, texto: "Fiz a mudança do apartamento com a Gilmar Fretes e superou minhas expectativas. Equipe educada, cuidadosa e muito eficiente. O orçamento foi claro e sem surpresas no final. Recomendo!" },
+    { nome: "Anderson Lima",       local: "Uberlândia – MG", nota: 5, texto: "Ótimo serviço! Fiz um mini frete para transportar eletrodomésticos e correu tudo bem. Equipe comprometida, sem atraso e com muito cuidado no manuseio. Com certeza vou contratar novamente." },
+    { nome: "Camila Rodrigues",    local: "Uberlândia – MG", nota: 5, texto: "Excelente empresa! Contratei para mudança residencial e fiquei impressionada com a organização da equipe. Cada móvel foi tratado com muito cuidado. Nota 10 para o atendimento e pontualidade." },
+    { nome: "Diego Nascimento",    local: "Uberlândia – MG", nota: 5, texto: "Precisei transferir o escritório para um espaço maior e a Gilmar Fretes cuidou de tudo. Operação rápida, sem paralisar o trabalho. Profissionalismo do início ao fim. Recomendo sem hesitar." },
+    { nome: "Aline Costa",         local: "Uberlândia – MG", nota: 5, texto: "Contratei para levar meus móveis de um bairro para outro e foi excelente. A equipe foi muito atenciosa, não danificou nada e ainda me ajudou a organizar os itens no destino. Parabéns!" },
+    { nome: "Bruno Almeida",       local: "Uberlândia – MG", nota: 5, texto: "Serviço de altíssima qualidade. O Gilmar é muito atencioso e a equipe trabalha com muita dedicação. Fizeram minha mudança completa em um único dia. Preço honesto e resultado perfeito!" },
+    { nome: "Luciana Martins",     local: "Uberlândia – MG", nota: 5, texto: "Me recomendaram a Gilmar Fretes e não me arrependo. Da cotação até a entrega, tudo foi transparente e bem organizado. Equipe simpática e muito cuidadosa com os pertences. Nota máxima!" },
   ],
 
   // ── FAQ ──────────────────────────────────────────────────
