@@ -879,9 +879,9 @@ function Index() {
         <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {EMPRESA.enderecoCompleto}</li>
        </ul>
        {/* Callback form — mobile only, below contact list */}
-       <div className="md:hidden mt-6 bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20">
-        <h3 className="font-display font-bold text-base mb-0.5">Se desejar, ligamos pra você</h3>
-        <p className="text-white/70 text-xs mb-4">Deixe seu nome e telefone. Retornamos o mais rápido possível.</p>
+       <div className="md:hidden mt-6 bg-white rounded-2xl p-5 shadow-xl">
+        <h3 className="font-display font-bold text-base mb-0.5 text-foreground">Se desejar, ligamos pra você</h3>
+        <p className="text-muted-foreground text-xs mb-4">Deixe seu nome e telefone. Retornamos o mais rápido possível.</p>
         <form
          className="space-y-3"
          onSubmit={async (e) => {
@@ -896,20 +896,20 @@ function Index() {
           window.open(waUrl, "_blank");
          }}
         >
-         <input name="nome" required maxLength={100} placeholder="Seu nome" className="w-full px-3 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm" />
-         <input name="tel" required maxLength={20} placeholder="(00) 00000-0000" className="w-full px-3 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm" />
-         <select name="tipo" required className="w-full px-3 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-white/30 text-sm">
-          <option value="" className="text-foreground">Tipo de serviço...</option>
+         <input name="nome" required maxLength={100} placeholder="Seu nome" className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm" />
+         <input name="tel" required maxLength={20} placeholder="(00) 00000-0000" className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm" />
+         <select name="tipo" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm">
+          <option value="">Tipo de serviço...</option>
           {EMPRESA.services.map(s => (
-           <option key={s.title} className="text-foreground">{s.title}</option>
+           <option key={s.title}>{s.title}</option>
           ))}
-          <option className="text-foreground">Outro</option>
+          <option>Outro</option>
          </select>
-         <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-[image:var(--gradient-cta)] text-white px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
+         <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
           Quero que me liguem
          </button>
-         <p className="flex items-center justify-center gap-1.5 text-xs text-white/50">
+         <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
           <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
           Seus dados serão usados apenas para contato.
          </p>
