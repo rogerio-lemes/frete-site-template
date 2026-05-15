@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, MessageCircle, MapPin, Star, ShieldCheck, Zap } from "lucide-react";
 import { saveLead, trackClick } from "@/hooks/use-tracking";
 
-const WA_NUMBER = "5534996567666";
+const WA_NUMBER = "5534991412518";
 const STORAGE_KEY = "ef_exit_popup_v1";
 
 const SERVICOS = [
