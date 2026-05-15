@@ -39,7 +39,7 @@ const services = EMPRESA.services.map((s, i) => ({ icon: serviceIcons[i] ?? Truc
 const benefitIcons = [Zap, Users, DollarSign, Truck, MapPin, ShieldCheck];
 const benefits = EMPRESA.benefits.map((b, i) => ({ icon: benefitIcons[i] ?? ShieldCheck, ...b }));
 
-const steps = EMPRESA.steps.map((s, i) => ({ n: String(i + 1), ...s }));
+const steps = EMPRESA.steps.slice(0, 3).map((s, i) => ({ n: String(i + 1), ...s }));
 
 const GOOGLE_REVIEW_LINK = EMPRESA.googleReviewLink;
 
