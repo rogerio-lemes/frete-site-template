@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { trackPageView, trackClick, saveLead } from "@/hooks/use-tracking";
+import { useTrackPageView, trackClick, saveLead } from "@/hooks/use-tracking";
+import { useCustomScripts } from "@/hooks/use-custom-scripts";
 import { ExitPopup } from "@/components/ExitPopup";
 import { WhatsAppMockup } from "@/components/WhatsAppMockup";
 import { SideNav } from "@/components/SideNav";
@@ -120,9 +121,8 @@ function Index() {
  const [formTel, setFormTel] = useState("");
 
  useScrollAnimation();
-
- // Rastreia page view ao montar
- useEffect(() => { trackPageView(); }, []);
+ useTrackPageView("/");
+ useCustomScripts();
 
 
  // Scroll suave e lento para seções internas
