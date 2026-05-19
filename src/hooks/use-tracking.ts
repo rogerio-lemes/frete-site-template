@@ -38,23 +38,22 @@ export function useTrackPageView(pagina: string) {
       device: getDevice(),
       session_id: getSessionId(),
       navegador: getNavegador(),
+    }).then(({ error }) => {
+      if (error) console.error("[tracking] page_view error:", error.message, error.details, error.hint);
     });
   }, [pagina]);
 }
 
 /** Registra clique em botão/link */
 export async function trackClick(tipo: string, url_destino?: string, pagina?: string) {
-  try {
-    await supabase.from("link_clicks").insert({
-      tenant_id: getTid(),
-      tipo,
-      pagina: pagina ?? window.location.pathname,
-      url_destino: url_destino ?? null,
-      device: getDevice(),
-    });
-  } catch (_) {
-    // silencioso
-  }
+  const { error } = await supabase.from("link_clicks").insert({
+    tenant_id: getTid(),
+    tipo,
+    pagina: pagina ?? window.location.pathname,
+    url_destino: url_destino ?? null,
+    device: getDevice(),
+  });
+  if (error) console.error("[tracking] link_click error:", error.message, error.details, error.hint);
 }
 
 /** Salva lead no Supabase */
