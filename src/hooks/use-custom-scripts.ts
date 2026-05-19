@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
-const TENANT_ID = "8f6787a6-2cb4-45b6-b048-d087ffc28e48";
+const TENANT_ID = "04170f77-8db2-4605-a5d8-e446d9926edc";
 
 function injectScript(codigo: string, local: string) {
   const container =
