@@ -194,7 +194,7 @@ function Index() {
    {/* Top bar */}
    <div className="hidden md:block bg-primary text-primary-foreground text-sm">
     <div className="mx-auto px-4 max-w-[1320px] py-2 flex justify-between items-center">
-     <span className="flex items-center gap-2"><Phone className="w-3.5 h-3.5" /> {EMPRESA.telefone}</span>
+     <a href={`tel:+${EMPRESA.telefoneRaw}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity"><Phone className="w-3.5 h-3.5" /> {EMPRESA.telefone}</a>
      <span className="flex items-center gap-4">
       <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {EMPRESA.horario}</span>
       <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> {EMPRESA.regiao}</span>
