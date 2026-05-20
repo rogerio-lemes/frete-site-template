@@ -87,16 +87,21 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
     };
 
     console.log("[lead] salvando:", payload);
-    const { data, error } = await supabase.from("leads").insert(payload).select("id").single();
+    const { error } = await supabase.from("leads").insert(payload);
 
     if (error) {
-      console.error("[lead] ERRO:", error.code, error.message, error.details, error.hint);
-      setErroGeral("Não foi possível salvar. Tente novamente.");
-      setLoading(false);
-      return;
+      // 23505 = telefone já existe no banco — lead já registrado, segue normalmente
+      if (error.code === "23505") {
+        console.log("[lead] telefone já existe, lead atualizado ✅");
+      } else {
+        console.error("[lead] ERRO:", error.code, error.message, error.hint);
+        setErroGeral("Não foi possível salvar. Tente novamente.");
+        setLoading(false);
+        return;
+      }
+    } else {
+      console.log("[lead] salvo com sucesso ✅");
     }
-
-    console.log("[lead] salvo com sucesso, id:", data?.id);
 
     // Monta mensagem do WhatsApp
     const msg = [
