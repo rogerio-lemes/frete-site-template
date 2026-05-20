@@ -344,9 +344,9 @@ function Index() {
         </div>
         <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{s.desc}</p>
-        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_servicos", WA_LINK)} className="inline-flex items-center gap-2 bg-primary/[0.07] hover:bg-whatsapp hover:text-white text-primary font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 group-hover:gap-3 lp-glow-whatsapp">
+        <button onClick={() => { trackClick("orcamento_servicos"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-primary/[0.07] hover:bg-whatsapp hover:text-white text-primary font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 group-hover:gap-3 lp-glow-whatsapp">
          <MessageCircle className="w-4 h-4" /> Pedir pelo WhatsApp
-        </a>
+        </button>
        </div>
       ))}
      </div>
@@ -498,9 +498,9 @@ function Index() {
       ))}
      </div>
      <div className="text-center mt-10">
-      <a href={`https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent("Olá, estou no seu site e quero entender qual serviço de frete é ideal para mim!")}`} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_servicos_ideal", WA_BASIC)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
+      <button onClick={() => { trackClick("orcamento_como_funciona"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
        <MessageCircle className="w-5 h-5" /> Quero entender qual solução é ideal para mim
-      </a>
+      </button>
      </div>
     </div>
    </section>
@@ -545,9 +545,9 @@ function Index() {
        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Ainda tem dúvida sobre qual serviço escolher?</h2>
        <p className="max-w-2xl mx-auto lg:mx-0 mb-7 opacity-90">Fale agora com a nossa equipe e receba uma orientação personalizada, sem custo e sem compromisso. Atendemos você em Uberlândia e região 24 horas por dia.</p>
        <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
-        <a href={WA_CHAT} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_cta", WA_CHAT)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
+        <button onClick={() => { trackClick("orcamento_cta"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
          <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp
-        </a>
+        </button>
         <a href={`tel:+${EMPRESA.telefoneRaw}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/20">
          <Phone className="w-5 h-5" /> {EMPRESA.telefone}
         </a>
@@ -682,9 +682,9 @@ function Index() {
        </svg>
        Deixar minha avaliação no Google
       </a>
-      <a href={WA_CHAT} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_regiao", WA_CHAT)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
+      <button onClick={() => { trackClick("orcamento_regiao"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
        <MessageCircle className="w-5 h-5" /> Solicitar meu frete agora
-      </a>
+      </button>
      </div>
 
     </div>
@@ -798,15 +798,12 @@ function Index() {
          <div className="px-5 pb-5">
           <p className="text-white/85 leading-relaxed mb-5 text-sm">{f.a}</p>
           <div className="flex flex-wrap gap-3">
-           <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener"
-            onClick={() => trackClick("whatsapp_depoimentos", WA_LINK)}
+           <button
+            onClick={() => { trackClick("orcamento_faq"); setOrcamentoOpen(true); }}
             className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 shadow-md"
            >
             <MessageCircle className="w-4 h-4" /> Chamar no WhatsApp
-           </a>
+           </button>
            <a
             href={`tel:+${EMPRESA.telefoneRaw}`}
             className="inline-flex items-center gap-2 bg-white/15 text-white border border-white/30 px-4 py-2.5 rounded-lg font-semibold text-sm hover:bg-white/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
@@ -841,9 +838,9 @@ function Index() {
      <h2 className="font-display text-3xl md:text-5xl font-bold mb-5 max-w-3xl mx-auto leading-tight anim drop-shadow-[0_2px_20px_rgba(0,0,0,0.25)]">Pronto para Resolver Seu Frete em Uberlândia?</h2>
      <p className="max-w-2xl mx-auto mb-8 opacity-95 text-lg anim">Seja uma mudança residencial, comercial ou um mini frete, a {EMPRESA.nome} está pronta para atender você com agilidade, equipe preparada e preço justo em Uberlândia. Não deixe para depois o que pode ser resolvido hoje.</p>
      <div className="flex flex-wrap gap-3 justify-center mb-7">
-      <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_final_cta", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-7 py-4 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
+      <button onClick={() => { trackClick("orcamento_final_cta_primary"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-7 py-4 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
        <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp agora
-      </a>
+      </button>
       <button onClick={() => { trackClick("orcamento_final_cta"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur text-white px-7 py-4 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/30">
        Solicitar Orçamento
       </button>
@@ -946,16 +943,14 @@ function Index() {
     {/* Balão de fala */}
     {chatBubble && (
      <div className="relative animate-fade-up lp-bubble-bob">
-      <a
-       href={WA_LINK}
-       target="_blank" rel="noopener"
-       onClick={() => trackClick("whatsapp_avatar_bubble", WA_BASIC)}
+      <button
+       onClick={() => { trackClick("orcamento_avatar_bubble"); setOrcamentoOpen(true); }}
        className="flex items-center gap-2 bg-white rounded-2xl rounded-br-none px-4 py-3 shadow-xl border border-border hover:shadow-2xl transition-shadow duration-200"
       >
        <span className="text-sm font-semibold text-foreground whitespace-nowrap leading-tight">
         <span className="lp-typing-cursor">Clique aqui e solicite</span><br />um orçamento rápido!
        </span>
-      </a>
+      </button>
       {/* Pontinha do balão apontando para baixo */}
       <div className="absolute -bottom-2 right-6 w-4 h-3 bg-white border-r border-b border-border" style={{clipPath:'polygon(0 0, 100% 0, 50% 100%)'}} />
       <button
@@ -966,10 +961,8 @@ function Index() {
     )}
 
     {/* Avatar feminino */}
-    <a
-     href={WA_LINK}
-     target="_blank" rel="noopener"
-     onClick={() => trackClick("whatsapp_avatar", WA_BASIC)}
+    <button
+     onClick={() => { trackClick("orcamento_avatar"); setOrcamentoOpen(true); }}
      aria-label="Falar pelo WhatsApp"
      className="w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-200 relative shrink-0 overflow-hidden border-[3px] border-white lp-avatar-pulse"
     >
@@ -978,7 +971,7 @@ function Index() {
      <span aria-hidden className="absolute inset-0 rounded-full lp-ring-ping lp-ring-ping-delay bg-emerald-400/30" />
      <img src={avatarAtendente} alt={`Atendente ${EMPRESA.nome}`} className="w-full h-full object-cover object-top relative z-10" />
      <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-white z-20 lp-pulse-dot" />
-    </a>
+    </button>
    </div>
 
    <ExitPopup />
