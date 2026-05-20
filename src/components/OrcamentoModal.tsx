@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { X, MessageCircle, User, MapPin, Phone, Package, Loader2 } from "lucide-react";
+import { X, MessageCircle, User, MapPin, Phone, Package, Loader2, AlertCircle } from "lucide-react";
 import { EMPRESA } from "@/config/empresa";
-import { submitLead, trackClick } from "@/hooks/use-tracking";
+import { trackClick } from "@/hooks/use-tracking";
+import { supabase } from "@/integrations/supabase/client";
+
+const TENANT_ID = "04170f77-8db2-4605-a5d8-e446d9926edc";
 
 const SERVICOS = [
   "Mudança Residencial",
@@ -25,6 +28,7 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
   const [servico, setServico] = useState("");
   const [loading, setLoading] = useState(false);
   const [erros, setErros] = useState<Record<string, string>>({});
+  const [erroGeral, setErroGeral] = useState("");
   const nomeRef = useRef<HTMLInputElement>(null);
 
   // Foca no primeiro campo ao abrir
@@ -67,17 +71,32 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
     if (!validar()) return;
 
     setLoading(true);
-    try {
-      await submitLead({
-        nome: nome.trim(),
-        telefone: telefone.replace(/\D/g, ""),
-        origem,
-        pagina_origem: window.location.pathname,
-        produto_interesse: servico,
-        observacoes: endereco ? `Endereço: ${endereco.trim()}` : undefined,
-        status: "novo",
-      });
-    } catch (_) {}
+    setErroGeral("");
+
+    // Salva lead no Supabase
+    const payload = {
+      tenant_id: TENANT_ID,
+      nome: nome.trim(),
+      telefone: telefone.replace(/\D/g, ""),
+      origem,
+      pagina_origem: window.location.pathname,
+      produto_interesse: servico,
+      observacoes: endereco ? `Endereço: ${endereco.trim()}` : null,
+      status: "novo",
+      tags: ["site", origem],
+    };
+
+    console.log("[lead] salvando:", payload);
+    const { data, error } = await supabase.from("leads").insert(payload).select("id").single();
+
+    if (error) {
+      console.error("[lead] ERRO:", error.code, error.message, error.details, error.hint);
+      setErroGeral("Não foi possível salvar. Tente novamente.");
+      setLoading(false);
+      return;
+    }
+
+    console.log("[lead] salvo com sucesso, id:", data?.id);
 
     // Monta mensagem do WhatsApp
     const msg = [
@@ -90,11 +109,9 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
     ].filter(Boolean).join("\n");
 
     const waUrl = `https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent(msg)}`;
-
     await trackClick(origem, waUrl);
-    setLoading(false);
 
-    // Limpa e fecha antes de abrir o WA
+    setLoading(false);
     setNome(""); setEndereco(""); setTelefone(""); setServico(""); setErros({});
     onClose();
     window.open(waUrl, "_blank", "noopener");
@@ -198,6 +215,14 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
             </select>
             {erros.servico && <p className="text-red-500 text-xs mt-1">{erros.servico}</p>}
           </div>
+
+          {/* Erro geral */}
+          {erroGeral && (
+            <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-2.5">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              {erroGeral}
+            </div>
+          )}
 
           {/* Botão */}
           <button
