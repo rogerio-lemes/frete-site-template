@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { X, MessageCircle, User, MapPin, Phone, Package, Loader2, AlertCircle } from "lucide-react";
+import { X, MessageCircle, User, Phone, Package, Loader2, AlertCircle } from "lucide-react";
 import { EMPRESA } from "@/config/empresa";
 import { trackClick } from "@/hooks/use-tracking";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,7 +23,6 @@ interface Props {
 
 export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Props) {
   const [nome, setNome] = useState("");
-  const [endereco, setEndereco] = useState("");
   const [telefone, setTelefone] = useState("");
   const [servico, setServico] = useState("");
   const [loading, setLoading] = useState(false);
@@ -81,7 +80,7 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
       origem,
       pagina_origem: window.location.pathname,
       produto_interesse: servico,
-      observacoes: endereco ? `Endereço: ${endereco.trim()}` : null,
+      observacoes: null,
       status: "novo",
       tags: ["site", origem],
     };
@@ -108,7 +107,7 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
       `Olá, tudo bem? 😊 Vi o site da *${EMPRESA.nome}* e gostaria de um orçamento.`,
       ``,
       `Meu nome é *${nome.trim()}* e preciso de *${servico}*.`,
-      endereco.trim() ? `Estou em *${endereco.trim()}*.` : null,
+      null,
       `Meu WhatsApp é *${telefone}*.`,
       ``,
       `Podem me ajudar? 🚛`,
@@ -119,7 +118,7 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
     await trackClick(origem, waUrl);
 
     setLoading(false);
-    setNome(""); setEndereco(""); setTelefone(""); setServico(""); setErros({});
+    setNome(""); setTelefone(""); setServico(""); setErros({});
     onClose();
     window.open(waUrl, "_blank", "noopener");
   }
@@ -170,21 +169,6 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
                 ${erros.nome ? "border-red-400 bg-red-50 focus:border-red-500" : "border-gray-200 focus:border-primary bg-gray-50 focus:bg-white"}`}
             />
             {erros.nome && <p className="text-red-500 text-xs mt-1">{erros.nome}</p>}
-          </div>
-
-          {/* Endereço */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              <MapPin className="inline w-3.5 h-3.5 mr-1 text-primary" />
-              Endereço (origem ou destino)
-            </label>
-            <input
-              type="text"
-              value={endereco}
-              onChange={e => setEndereco(e.target.value)}
-              placeholder="Ex: Rua das Flores, 123 – Uberlândia"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-primary bg-gray-50 focus:bg-white text-sm outline-none transition-colors"
-            />
           </div>
 
           {/* Telefone */}
