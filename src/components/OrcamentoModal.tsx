@@ -104,14 +104,16 @@ export function OrcamentoModal({ open, onClose, origem = "modal_orcamento" }: Pr
     }
 
     // Monta mensagem do WhatsApp
-    const msg = [
-      `Olá! Gostaria de solicitar um orçamento:`,
+    const linhas = [
+      `Olá, tudo bem? 😊 Vi o site da *${EMPRESA.nome}* e gostaria de um orçamento.`,
       ``,
-      `*Nome:* ${nome.trim()}`,
-      endereco.trim() ? `*Endereço:* ${endereco.trim()}` : null,
-      `*Telefone:* ${telefone}`,
-      `*Serviço:* ${servico}`,
-    ].filter(Boolean).join("\n");
+      `Meu nome é *${nome.trim()}* e preciso de *${servico}*.`,
+      endereco.trim() ? `Estou em *${endereco.trim()}*.` : null,
+      `Meu WhatsApp é *${telefone}*.`,
+      ``,
+      `Podem me ajudar? 🚛`,
+    ];
+    const msg = linhas.filter(Boolean).join("\n");
 
     const waUrl = `https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent(msg)}`;
     await trackClick(origem, waUrl);
