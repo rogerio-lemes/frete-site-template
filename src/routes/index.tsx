@@ -18,12 +18,11 @@ import {
 } from "lucide-react";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { useTrackPageView, trackClick, saveLead } from "@/hooks/use-tracking";
+import { useTrackPageView, trackClick } from "@/hooks/use-tracking";
 import { useCustomScripts } from "@/hooks/use-custom-scripts";
 import { ExitPopup } from "@/components/ExitPopup";
 import { WhatsAppMockup } from "@/components/WhatsAppMockup";
 import { SideNav } from "@/components/SideNav";
-import { OrcamentoModal } from "@/components/OrcamentoModal";
 
 const WA_LINK = WA_LINK_CONFIG;
 const WA_BASIC = WA_BASIC_CONFIG;
@@ -116,11 +115,6 @@ function Index() {
  const [activeSection, setActiveSection] = useState("inicio");
  const [chatOpen, setChatOpen] = useState(false);
  const [chatBubble, setChatBubble] = useState(true);
- const [orcamentoOpen, setOrcamentoOpen] = useState(false);
-
- // States dos formulários para capturar lead
- const [formNome, setFormNome] = useState("");
- const [formTel, setFormTel] = useState("");
 
  useScrollAnimation();
  useTrackPageView("/");
@@ -192,7 +186,6 @@ function Index() {
 
  return (
    <div className="text-foreground font-sans relative lp-animated-bg" style={{overflow: "clip"}}>
-    <OrcamentoModal open={orcamentoOpen} onClose={() => setOrcamentoOpen(false)} />
     <SideNav activeSection={activeSection} onNavigate={smoothScrollTo} />
    {/* Top bar */}
    <div className="hidden md:block bg-primary text-primary-foreground text-sm">
@@ -224,9 +217,9 @@ function Index() {
        </a>
       ))}
      </nav>
-     <button onClick={() => { trackClick("orcamento_header"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)] animate-wa-pulse">
+     <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_header", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)] animate-wa-pulse">
       <MessageCircle className="w-4 h-4" /> Solicitar Orçamento
-     </button>
+     </a>
      <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-2" aria-label="Menu">
       {menuOpen ? <X /> : <Menu />}
      </button>
@@ -237,7 +230,7 @@ function Index() {
         {[["Início","inicio"],["Serviços","servicos"],["Como Funciona","como-funciona"],["Orçamento","orcamento"],["Depoimentos","depoimentos"],["FAQ","faq"],["Contato","contato-final"]].map(([l,id]) => (
          <a key={id} href={`#${id}`} onClick={e => { e.preventDefault(); setMenuOpen(false); smoothScrollTo(id); }} className={`py-2 px-3 -mx-3 rounded-md border-b border-border transition-all duration-200 ${activeSection === id ? "bg-primary text-white font-semibold" : "hover:bg-primary hover:text-white"}`}>{l}</a>
         ))}
-       <button onClick={() => { setMenuOpen(false); trackClick("orcamento_header_mobile"); setOrcamentoOpen(true); }} className="bg-whatsapp text-whatsapp-foreground px-4 py-3 rounded-lg font-semibold text-center mt-2">Solicitar Orçamento</button>
+       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => { setMenuOpen(false); trackClick("whatsapp_header_mobile", WA_LINK); }} className="bg-whatsapp text-whatsapp-foreground px-4 py-3 rounded-lg font-semibold text-center mt-2">Solicitar Orçamento</a>
       </nav>
      </div>
     )}
@@ -263,9 +256,12 @@ function Index() {
        {EMPRESA.heroSubtitulo}
       </p>
       <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{animationDelay:"320ms"}}>
-       <button onClick={() => { trackClick("orcamento_hero"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp animate-cta-pulse">
+       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_hero", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp animate-cta-pulse">
         <MessageCircle className="w-5 h-5" /> Pedir Orçamento pelo WhatsApp
-       </button>
+       </a>
+       <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_hero")} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur border border-white/30 text-white px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 active:scale-[0.97] transition-all duration-200">
+        <Phone className="w-5 h-5" /> {EMPRESA.telefone}
+       </a>
        <a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-primary/10 hover:text-primary hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-border">
         Ver nossos serviços <ArrowRight className="w-4 h-4" />
        </a>
@@ -344,9 +340,9 @@ function Index() {
         </div>
         <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{s.desc}</p>
-        <button onClick={() => { trackClick("orcamento_servicos"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-primary/[0.07] hover:bg-whatsapp hover:text-white text-primary font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 group-hover:gap-3 lp-glow-whatsapp">
+        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_servicos", WA_LINK)} className="inline-flex items-center gap-2 bg-primary/[0.07] hover:bg-whatsapp hover:text-white text-primary font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 group-hover:gap-3 lp-glow-whatsapp">
          <MessageCircle className="w-4 h-4" /> Pedir pelo WhatsApp
-        </button>
+        </a>
        </div>
       ))}
      </div>
@@ -498,9 +494,9 @@ function Index() {
       ))}
      </div>
      <div className="text-center mt-10">
-      <button onClick={() => { trackClick("orcamento_como_funciona"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
+      <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_como_funciona", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
        <MessageCircle className="w-5 h-5" /> Quero entender qual solução é ideal para mim
-      </button>
+      </a>
      </div>
     </div>
    </section>
@@ -545,9 +541,12 @@ function Index() {
        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Ainda tem dúvida sobre qual serviço escolher?</h2>
        <p className="max-w-2xl mx-auto lg:mx-0 mb-7 opacity-90">Fale agora com a nossa equipe e receba uma orientação personalizada, sem custo e sem compromisso. Atendemos você em Uberlândia e região 24 horas por dia.</p>
        <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
-        <button onClick={() => { trackClick("orcamento_cta"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
+        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_cta", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
          <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp
-        </button>
+        </a>
+        <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_cta")} className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3.5 rounded-lg font-semibold hover:bg-primary hover:text-white active:scale-[0.97] transition-all duration-200">
+         <Phone className="w-5 h-5" /> Ligar agora
+        </a>
         <a href={`tel:+${EMPRESA.telefoneRaw}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/20">
          <Phone className="w-5 h-5" /> {EMPRESA.telefone}
         </a>
@@ -682,9 +681,9 @@ function Index() {
        </svg>
        Deixar minha avaliação no Google
       </a>
-      <button onClick={() => { trackClick("orcamento_regiao"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
+      <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_regiao", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
        <MessageCircle className="w-5 h-5" /> Solicitar meu frete agora
-      </button>
+      </a>
      </div>
 
     </div>
@@ -798,12 +797,9 @@ function Index() {
          <div className="px-5 pb-5">
           <p className="text-white/85 leading-relaxed mb-5 text-sm">{f.a}</p>
           <div className="flex flex-wrap gap-3">
-           <button
-            onClick={() => { trackClick("orcamento_faq"); setOrcamentoOpen(true); }}
-            className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 shadow-md"
-           >
+           <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_faq", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 shadow-md">
             <MessageCircle className="w-4 h-4" /> Chamar no WhatsApp
-           </button>
+           </a>
            <a
             href={`tel:+${EMPRESA.telefoneRaw}`}
             className="inline-flex items-center gap-2 bg-white/15 text-white border border-white/30 px-4 py-2.5 rounded-lg font-semibold text-sm hover:bg-white/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
@@ -838,12 +834,12 @@ function Index() {
      <h2 className="font-display text-3xl md:text-5xl font-bold mb-5 max-w-3xl mx-auto leading-tight anim drop-shadow-[0_2px_20px_rgba(0,0,0,0.25)]">Pronto para Resolver Seu Frete em Uberlândia?</h2>
      <p className="max-w-2xl mx-auto mb-8 opacity-95 text-lg anim">Seja uma mudança residencial, comercial ou um mini frete, a {EMPRESA.nome} está pronta para atender você com agilidade, equipe preparada e preço justo em Uberlândia. Não deixe para depois o que pode ser resolvido hoje.</p>
      <div className="flex flex-wrap gap-3 justify-center mb-7">
-      <button onClick={() => { trackClick("orcamento_final_cta_primary"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-7 py-4 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
+      <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_final_cta", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-7 py-4 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
        <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp agora
-      </button>
-      <button onClick={() => { trackClick("orcamento_final_cta"); setOrcamentoOpen(true); }} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur text-white px-7 py-4 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/30">
-       Solicitar Orçamento
-      </button>
+      </a>
+      <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_final_cta")} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur text-white px-7 py-4 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/30">
+       <Phone className="w-5 h-5" /> {EMPRESA.telefone}
+      </a>
      </div>
      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm opacity-95">
       <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> Atendimento 24h</span>
@@ -878,42 +874,13 @@ function Index() {
         <li className="flex items-center gap-2"><Clock className="w-4 h-4" /> {EMPRESA.horario}</li>
         <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {EMPRESA.enderecoCompleto}</li>
        </ul>
-       {/* Callback form — mobile only, below contact list */}
-       <div className="md:hidden mt-6 bg-white rounded-2xl p-5 shadow-xl">
-        <h3 className="font-display font-bold text-base mb-0.5 text-foreground">Se desejar, ligamos pra você</h3>
-        <p className="text-muted-foreground text-xs mb-4">Deixe seu nome e telefone. Retornamos o mais rápido possível.</p>
-        <form
-         className="space-y-3"
-         onSubmit={async (e) => {
-          e.preventDefault();
-          const fd = new FormData(e.currentTarget as HTMLFormElement);
-          const nome = fd.get("nome") as string;
-          const tel = fd.get("tel") as string;
-          const tipo = fd.get("tipo") as string;
-          const waUrl = `https://wa.me/${EMPRESA.telefoneRaw}?text=${encodeURIComponent(`Olá, estou no seu site! Sou ${nome} e gostaria de um orçamento para ${tipo}. Meu telefone é ${tel} 🚛`)}`;
-          await saveLead({ nome, telefone: tel, origem: "footer", observacoes: `Serviço: ${tipo}` });
-          await trackClick("whatsapp_footer", waUrl);
-          window.open(waUrl, "_blank");
-         }}
-        >
-         <input name="nome" required maxLength={100} placeholder="Seu nome" className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm" />
-         <input name="tel" required maxLength={20} placeholder="(00) 00000-0000" className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm" />
-         <select name="tipo" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm">
-          <option value="">Tipo de serviço...</option>
-          {EMPRESA.services.map(s => (
-           <option key={s.title}>{s.title}</option>
-          ))}
-          <option>Outro</option>
-         </select>
-         <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-          Quero que me liguem
-         </button>
-         <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-          Seus dados serão usados apenas para contato.
-         </p>
-        </form>
+       <div className="md:hidden mt-6 flex flex-col gap-3">
+        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_footer", WA_LINK)} className="w-full inline-flex items-center justify-center gap-2 bg-whatsapp text-whatsapp-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
+         <MessageCircle className="w-4 h-4" /> WhatsApp
+        </a>
+        <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_footer")} className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition-all duration-200">
+         <Phone className="w-4 h-4" /> {EMPRESA.telefone}
+        </a>
        </div>
       </div>
       <div>
@@ -943,14 +910,15 @@ function Index() {
     {/* Balão de fala */}
     {chatBubble && (
      <div className="relative animate-fade-up lp-bubble-bob">
-      <button
-       onClick={() => { trackClick("orcamento_avatar_bubble"); setOrcamentoOpen(true); }}
+      <a
+       href={WA_LINK} target="_blank" rel="noopener"
+       onClick={() => trackClick("whatsapp_avatar_bubble", WA_LINK)}
        className="flex items-center gap-2 bg-white rounded-2xl rounded-br-none px-4 py-3 shadow-xl border border-border hover:shadow-2xl transition-shadow duration-200"
       >
        <span className="text-sm font-semibold text-foreground whitespace-nowrap leading-tight">
         <span className="lp-typing-cursor">Clique aqui e solicite</span><br />um orçamento rápido!
        </span>
-      </button>
+      </a>
       {/* Pontinha do balão apontando para baixo */}
       <div className="absolute -bottom-2 right-6 w-4 h-3 bg-white border-r border-b border-border" style={{clipPath:'polygon(0 0, 100% 0, 50% 100%)'}} />
       <button
@@ -961,8 +929,9 @@ function Index() {
     )}
 
     {/* Avatar feminino */}
-    <button
-     onClick={() => { trackClick("orcamento_avatar"); setOrcamentoOpen(true); }}
+    <a
+     href={WA_LINK} target="_blank" rel="noopener"
+     onClick={() => trackClick("whatsapp_avatar", WA_LINK)}
      aria-label="Falar pelo WhatsApp"
      className="w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-200 relative shrink-0 overflow-hidden border-[3px] border-white lp-avatar-pulse"
     >
@@ -971,7 +940,7 @@ function Index() {
      <span aria-hidden className="absolute inset-0 rounded-full lp-ring-ping lp-ring-ping-delay bg-emerald-400/30" />
      <img src={avatarAtendente} alt={`Atendente ${EMPRESA.nome}`} className="w-full h-full object-cover object-top relative z-10" />
      <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-white z-20 lp-pulse-dot" />
-    </button>
+    </a>
    </div>
 
    <ExitPopup />
