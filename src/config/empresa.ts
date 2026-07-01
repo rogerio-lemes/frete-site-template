@@ -42,8 +42,8 @@ export const EMPRESA = {
 
   // ── Hero ─────────────────────────────────────────────────
   heroH1Inicio: "Fretes e Mudanças em Uberlândia:",
-  heroH1Destaque: "Rápido, Seguro e Sem Complicação",
-  heroSubtitulo: "A Gilmar Fretes é a sua empresa de confiança em Uberlândia para mudanças residenciais, mudanças comerciais, mini fretes e transporte de móveis. Se você precisa de um caminhão de frete ágil, com equipe experiente e preço justo, você encontrou o lugar certo. Entre em contato agora e receba seu orçamento sem compromisso.",
+  heroH1Destaque: "Orçamento Rápido!",
+  heroSubtitulo: "Agenda com vagas limitadas em Uberlândia — datas esgotam rápido. Solicite agora seu frete ou mudança com equipe experiente, preço justo e atendimento ágil.",
 
   // ── Trust Badges ─────────────────────────────────────────
   trustBadges: [
