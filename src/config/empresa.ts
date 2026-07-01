@@ -43,7 +43,7 @@ export const EMPRESA = {
   // ── Hero ─────────────────────────────────────────────────
   heroH1Inicio: "Fretes e Mudanças em Uberlândia:",
   heroH1Destaque: "Orçamento Rápido!",
-  heroSubtitulo: "Agenda com vagas limitadas em Uberlândia — datas esgotam rápido. Solicite agora seu frete ou mudança com equipe experiente, preço justo e atendimento ágil.",
+  heroSubtitulo: "Chega de pesquisar, você já encontrou. Nos chame agora, não perdemos Orçamento!",
 
   // ── Trust Badges ─────────────────────────────────────────
   trustBadges: [
