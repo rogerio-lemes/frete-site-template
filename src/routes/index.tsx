@@ -202,7 +202,7 @@ function Index() {
    <header className="sticky top-0 z-40 bg-white border-b border-border shadow-[0_4px_24px_-4px_oklch(0.32_0.08_250/0.10)]">
     <div className="mx-auto px-4 max-w-[1320px] flex items-center justify-between">
      <a href="#" onClick={e => { e.preventDefault(); smoothScrollTo(""); }} className="flex items-center">
-      <img src={logoImage} alt={EMPRESA.nome} style={{height: '96px', width: 'auto'}} className="object-contain" />
+      <img src={logoImage} alt={EMPRESA.nome} className="object-contain h-14 lg:h-24 w-auto" />
      </a>
      <nav className="hidden lg:flex items-center gap-1 text-sm font-medium">
       {[["Início","inicio"],["Serviços","servicos"],["Como Funciona","como-funciona"],["Orçamento","orcamento"],["Depoimentos","depoimentos"],["FAQ","faq"],["Contato","contato-final"]].map(([label, id]) => (
@@ -495,7 +495,7 @@ function Index() {
      </div>
      <div className="text-center mt-10">
       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_como_funciona", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)]">
-       <MessageCircle className="w-5 h-5" /> Quero entender qual solução é ideal para mim
+       <MessageCircle className="w-5 h-5" /> Orçamento Rápido!
       </a>
      </div>
     </div>
@@ -524,7 +524,7 @@ function Index() {
    </section>
 
    {/* CTA Intermediate */}
-   <section id="orcamento" className="pt-20 md:pt-28 pb-16 md:pb-20 relative overflow-hidden lp-cta-mid-bg scroll-mt-24">
+   <section id="orcamento" className="pt-10 md:pt-16 pb-8 md:pb-12 relative overflow-hidden lp-cta-mid-bg scroll-mt-24">
     <div className="absolute inset-0 lp-cta-mid-grid pointer-events-none" />
     <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-cyan-400/20 blur-3xl lp-blob-float pointer-events-none" />
     <div className="absolute -bottom-32 -right-20 w-[480px] h-[480px] rounded-full bg-blue-400/20 blur-3xl lp-blob-float pointer-events-none" style={{animationDelay:'-4s'}} />
@@ -543,9 +543,6 @@ function Index() {
        <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
         <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_cta", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp">
          <MessageCircle className="w-5 h-5" /> Falar pelo WhatsApp
-        </a>
-        <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_cta")} className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3.5 rounded-lg font-semibold hover:bg-primary hover:text-white active:scale-[0.97] transition-all duration-200">
-         <Phone className="w-5 h-5" /> Ligar agora
         </a>
         <a href={`tel:+${EMPRESA.telefoneRaw}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-white/20">
          <Phone className="w-5 h-5" /> {EMPRESA.telefone}

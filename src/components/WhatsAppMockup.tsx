@@ -37,30 +37,6 @@ export function WhatsAppMockup() {
       <Headphones className="w-3 h-3" /> Atendimento Humano
      </div>
 
-     {/* Copy persuasiva sobre o card */}
-     <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-      <div className="text-[10px] uppercase tracking-[0.15em] text-blue-200 font-semibold mb-1">Atendimento Direto</div>
-      <div className="font-display text-xl font-bold leading-tight mb-1">Tire suas dúvidas em segundos</div>
-      <div className="text-xs opacity-90 leading-snug">
-       Atendimento humano, rápido e sem robô. Resposta em poucos minutos pelo WhatsApp.
-      </div>
-     </div>
-    </div>
-
-    {/* Footer com benefícios */}
-    <div className="bg-white px-4 py-3 grid grid-cols-3 gap-2 border-t border-neutral-100">
-     <div className="flex flex-col items-center text-center gap-1 lp-badge-bounce">
-      <Clock className="w-4 h-4 text-primary lp-icon-tick" />
-      <span className="text-[10px] font-semibold text-neutral-700 leading-tight">Resposta<br />em minutos</span>
-     </div>
-     <div className="flex flex-col items-center text-center gap-1 border-x border-neutral-100 lp-badge-bounce lp-badge-bounce-d1">
-      <ShieldCheck className="w-4 h-4 text-emerald-600 lp-icon-wobble" />
-      <span className="text-[10px] font-semibold text-neutral-700 leading-tight">Sem<br />compromisso</span>
-     </div>
-     <div className="flex flex-col items-center text-center gap-1 lp-badge-bounce lp-badge-bounce-d2">
-      <MessageCircle className="w-4 h-4 text-primary lp-icon-chat" />
-      <span className="text-[10px] font-semibold text-neutral-700 leading-tight">Direto no<br />WhatsApp</span>
-     </div>
     </div>
    </div>
 
