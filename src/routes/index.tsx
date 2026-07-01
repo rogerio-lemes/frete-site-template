@@ -218,7 +218,7 @@ function Index() {
       ))}
      </nav>
      <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_header", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-4 py-2.5 rounded-lg font-semibold text-sm hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 shadow-[var(--shadow-card)] animate-wa-pulse">
-      <MessageCircle className="w-4 h-4" /> Solicitar Orçamento
+      <MessageCircle className="w-4 h-4" /> Fale Conosco!
      </a>
      <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-2" aria-label="Menu">
       {menuOpen ? <X /> : <Menu />}
@@ -230,7 +230,10 @@ function Index() {
         {[["Início","inicio"],["Serviços","servicos"],["Como Funciona","como-funciona"],["Orçamento","orcamento"],["Depoimentos","depoimentos"],["FAQ","faq"],["Contato","contato-final"]].map(([l,id]) => (
          <a key={id} href={`#${id}`} onClick={e => { e.preventDefault(); setMenuOpen(false); smoothScrollTo(id); }} className={`py-2 px-3 -mx-3 rounded-md border-b border-border transition-all duration-200 ${activeSection === id ? "bg-primary text-white font-semibold" : "hover:bg-primary hover:text-white"}`}>{l}</a>
         ))}
-       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => { setMenuOpen(false); trackClick("whatsapp_header_mobile", WA_LINK); }} className="bg-whatsapp text-whatsapp-foreground px-4 py-3 rounded-lg font-semibold text-center mt-2">Solicitar Orçamento</a>
+       <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => { setMenuOpen(false); trackClick("whatsapp_header_mobile", WA_LINK); }} className="bg-whatsapp text-whatsapp-foreground px-4 py-3 rounded-lg font-semibold text-center mt-2">Fale Conosco!</a>
+       <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => { setMenuOpen(false); trackClick("telefone_header_mobile"); }} className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-lg font-semibold text-center mt-2">
+        <Phone className="w-4 h-4" /> {EMPRESA.telefone}
+       </a>
       </nav>
      </div>
     )}
@@ -255,15 +258,12 @@ function Index() {
       <p className="text-lg text-muted-foreground mb-7 leading-relaxed animate-fade-up" style={{animationDelay:"200ms"}}>
        {EMPRESA.heroSubtitulo}
       </p>
-      <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{animationDelay:"320ms"}}>
+      <div className="flex flex-wrap gap-3 mb-8 animate-fade-up justify-center lg:justify-start" style={{animationDelay:"320ms"}}>
        <a href={WA_LINK} target="_blank" rel="noopener" onClick={() => trackClick("whatsapp_hero", WA_LINK)} className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-6 py-3.5 rounded-lg font-semibold hover:brightness-110 active:scale-[0.97] transition-all duration-200 lp-glow-whatsapp animate-cta-pulse">
-        <MessageCircle className="w-5 h-5" /> Pedir Orçamento pelo WhatsApp
+        <MessageCircle className="w-5 h-5" /> Orçamento Grátis!
        </a>
-       <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_hero")} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur border border-white/30 text-white px-6 py-3.5 rounded-lg font-semibold hover:bg-white/25 active:scale-[0.97] transition-all duration-200">
+       <a href={`tel:+${EMPRESA.telefoneRaw}`} onClick={() => trackClick("telefone_hero")} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-lg font-semibold shadow-[0_4px_16px_-4px_oklch(0.45_0.16_143/0.5)] hover:brightness-110 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200">
         <Phone className="w-5 h-5" /> {EMPRESA.telefone}
-       </a>
-       <a href="#servicos" onClick={e => { e.preventDefault(); smoothScrollTo("servicos"); }} className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3.5 rounded-lg font-semibold hover:bg-primary/10 hover:text-primary hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 border border-border">
-        Ver nossos serviços <ArrowRight className="w-4 h-4" />
        </a>
       </div>
       <div className="grid grid-cols-2 gap-3 text-sm animate-fade-up" style={{animationDelay:"420ms"}}>

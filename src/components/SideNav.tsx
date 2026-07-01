@@ -45,11 +45,7 @@ export function SideNav({ activeSection, onNavigate }: SideNavProps) {
               type="button"
               onClick={() => onNavigate(id)}
               tabIndex={-1}
-              className={`absolute left-full ml-3 whitespace-nowrap bg-primary text-primary-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg transition-all duration-200 cursor-pointer hover:brightness-110 ${
-                isActive
-                  ? "opacity-100 translate-x-0 pointer-events-auto"
-                  : "opacity-0 -translate-x-1 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto"
-              }`}
+              className="absolute left-full ml-3 whitespace-nowrap bg-primary text-primary-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg transition-all duration-200 cursor-pointer hover:brightness-110 opacity-0 -translate-x-1 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto"
             >
               {label}
             </button>
